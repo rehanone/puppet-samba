@@ -1,6 +1,7 @@
 # Class: samba::params
 #
 class samba::params {
+  $package_manage   = true
   $package_ensure   = 'latest'
   $package_server   = 'samba'
   $package_client   = $::facts[os][family] ? {
@@ -39,15 +40,15 @@ class samba::params {
   $interfaces               = []
   $bind_interfaces_only     = undef
   $log_file                 = '/var/log/samba/log.%m'
-  $max_log_size             = '10000'
+  $max_log_size             = 10000
   $passdb_backend           = 'tdbsam'
   $domain_logons            = false
   $security                 = 'user'
-  $encrypt_passwords        = 'yes'
-  $unix_password_sync       = 'yes'
+  $encrypt_passwords        = true
+  $unix_password_sync       = true
   $map_to_guest             = 'Never'
   $socket_options           = 'TCP_NODELAY'
-  $syslog                   = ''
+  $syslog                   = undef
   $extra_global_options     = []
 
   case $::facts[os][family] {
