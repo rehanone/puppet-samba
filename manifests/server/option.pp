@@ -1,7 +1,7 @@
 # == Define samba::server::option
 #
 define samba::server::option (
-  Variant[Boolean, Integer, String, Array[String], Undef] $value,
+  Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,
   String $config_file = $samba::params::config_file,
   String $lens        = 'Samba.lns',
   String $target      = $samba::server::target,
@@ -15,7 +15,7 @@ define samba::server::option (
   }
 
   $changes = $str_value ? {
-    ''      => "rm ${target}/${name}",
+    ''      => "rm \"${target}/${name}\"",
     default => "set \"${target}/${name}\" \"${str_value}\"",
   }
 

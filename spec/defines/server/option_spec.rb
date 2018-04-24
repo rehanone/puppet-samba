@@ -65,7 +65,7 @@ describe 'samba::server::option' do
 
       context 'with an undef as a value', :compile do
         let(:title) { 'test' }
-        let(:params) { { value: nil } }
+        let(:params) { {} }
 
         it {
           is_expected.to contain_augeas('samba-test').with(
