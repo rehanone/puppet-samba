@@ -34,7 +34,7 @@ define samba::server::share($ensure = present,
   $context = $samba::server::context
   $target  = "target[. = '${name}']"
 
-  # lint:ignore:no-selector_inside_resource-check
+  # lint:ignore:selector_inside_resource
   augeas { "${name}-section":
     incl    => $incl,
     lens    => 'Samba.lns',
