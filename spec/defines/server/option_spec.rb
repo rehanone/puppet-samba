@@ -19,7 +19,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = \"global\"]/test" "yes"',
+            'changes' => 'set "target[. = "global"]/test" "yes"',
           )
         }
       end
@@ -32,7 +32,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = \"global\"]/test" "no"',
+            'changes' => 'set "target[. = "global"]/test" "no"',
           )
         }
       end
@@ -45,7 +45,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = \"global\"]/test" "100"',
+            'changes' => 'set "target[. = "global"]/test" "100"',
           )
         }
       end
@@ -58,7 +58,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = \"global\"]/test" "ssl"',
+            'changes' => 'set "target[. = "global"]/test" "ssl"',
           )
         }
       end
@@ -71,7 +71,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'rm "target[. = \"global\"]/test"',
+            'changes' => 'rm "target[. = "global"]/test"',
           )
         }
       end
@@ -84,7 +84,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'rm "target[. = \"global\"]/test"',
+            'changes' => 'rm "target[. = "global"]/test"',
           )
         }
       end
@@ -97,7 +97,7 @@ describe 'samba::server::option' do
           is_expected.to contain_augeas('samba-test').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = \"global\"]/test" "ssl tls"',
+            'changes' => 'set "target[. = "global"]/test" "ssl tls"',
           )
         }
       end
