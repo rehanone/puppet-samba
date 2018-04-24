@@ -72,4 +72,4 @@ class samba::server (
     -> class { "${module_name}::server::firewall": }
     -> anchor { "${module_name}::end": }
   }
-}	
+}

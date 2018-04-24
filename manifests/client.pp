@@ -1,3 +1,5 @@
+# samba::client
+#
 class samba::client (
   String $package_ensure  = $samba::params::package_ensure,
   String $package_client  = $samba::params::package_client,

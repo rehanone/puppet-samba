@@ -11,7 +11,7 @@ define samba::server::option ( $value = '' ) {
 
 
   if ($value =~ Array[Any]) {
-    $str_value = join($value, " ")
+    $str_value = join($value, ' ')
   } else {
     $str_value = $value
   }
