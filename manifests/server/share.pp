@@ -34,6 +34,7 @@ define samba::server::share($ensure = present,
   $context = $samba::server::context
   $target  = "target[. = '${name}']"
 
+  # lint:no-selector_inside_resource-check
   augeas { "${name}-section":
     incl    => $incl,
     lens    => 'Samba.lns',
@@ -206,6 +207,6 @@ define samba::server::share($ensure = present,
       require => Augeas["${name}-section"],
       notify  => Class['samba::server::service']
     }
-
   }
+  # lint:endignore
 }
