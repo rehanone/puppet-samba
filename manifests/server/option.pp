@@ -1,10 +1,10 @@
 # == Define samba::server::option
 #
 define samba::server::option (
+  Variant[Boolean, Integer, String, Array[String], Undef] $value,
   String $config_file = $samba::params::config_file,
   String $lens        = 'Samba.lns',
   String $target      = $samba::server::target,
-  Variant[Boolean, Integer, String, Array[String], Undef] $value,
 ) {
   $str_value = $value ? {
     Array   => join($value, ' '),

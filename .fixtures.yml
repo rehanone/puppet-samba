@@ -3,4 +3,7 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    stdlib:
+      repo: "puppetlabs/stdlib"
+  symlinks:
+    samba: "#{source_dir}"
