@@ -1,19 +1,17 @@
 # == Define samba::server::option
 #
-define samba::server::option ( $value = '' ) {
-
-  assert_private("Use of private class ${name} by ${caller_module_name}")
-
-  $incl    = $samba::server::incl
-  $context = $samba::server::context
-  $target  = $samba::server::target
-
-
-
-  if ($value =~ Array[Any]) {
-    $str_value = join($value, ' ')
-  } else {
-    $str_value = $value
+define samba::server::option (
+  String $config_file = $samba::params::config_file,
+  String $lens        = 'Samba.lns',
+  String $target      = $samba::server::target,
+  Variant[Boolean, Integer, String, Array[String], Undef] $value,
+) {
+  $str_value = $value ? {
+    Array   => join($value, ' '),
+    true    => 'yes',
+    false   => 'no',
+    undef   => '',
+    default => $value
   }
 
   $changes = $str_value ? {
@@ -22,11 +20,9 @@ define samba::server::option ( $value = '' ) {
   }
 
   augeas { "samba-${name}":
-    incl    => $incl,
-    lens    => 'Samba.lns',
-    context => $context,
+    incl    => $config_file,
+    lens    => $lens,
     changes => $changes,
-    require => Augeas['samba-global-section'],
     notify  => Class["${module_name}::server::service"]
   }
 }
