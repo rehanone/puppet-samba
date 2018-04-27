@@ -1,6 +1,7 @@
 # == Define samba::server::option
 #
 define samba::server::option (
+  String $key         = $title,
   Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,
   String $config_file = $samba::params::config_file,
   String $lens        = 'Samba.lns',
@@ -15,11 +16,11 @@ define samba::server::option (
   }
 
   $changes = $str_value ? {
-    ''      => "rm \"${target}/${name}\"",
-    default => "set \"${target}/${name}\" \"${str_value}\"",
+    ''      => "rm \"${target}/${key}\"",
+    default => "set \"${target}/${key}\" \"${str_value}\"",
   }
 
-  augeas { "samba-${name}":
+  augeas { "samba option (${title}=${str_value})":
     incl    => $config_file,
     lens    => $lens,
     changes => $changes,
