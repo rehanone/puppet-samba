@@ -13,26 +13,26 @@ describe 'samba::server::option' do
 
       context 'with boolean true as a value', :compile do
         let(:title) { 'test' }
-        let(:params) { { value: true } }
+        let(:params) { { key: 'foo', value: true } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=yes)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = "global"]/test" "yes"',
+            'changes' => 'set "target[. = "global"]/foo" "yes"',
           )
         }
       end
 
       context 'with boolean false as a value', :compile do
         let(:title) { 'test' }
-        let(:params) { { value: false } }
+        let(:params) { { key: 'foo', value: false } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=no)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
-            'changes' => 'set "target[. = "global"]/test" "no"',
+            'changes' => 'set "target[. = "global"]/foo" "no"',
           )
         }
       end
@@ -42,7 +42,7 @@ describe 'samba::server::option' do
         let(:params) { { value: 100 } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=100)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
             'changes' => 'set "target[. = "global"]/test" "100"',
@@ -55,7 +55,7 @@ describe 'samba::server::option' do
         let(:params) { { value: 'ssl' } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=ssl)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
             'changes' => 'set "target[. = "global"]/test" "ssl"',
@@ -68,7 +68,7 @@ describe 'samba::server::option' do
         let(:params) { {} }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
             'changes' => 'rm "target[. = "global"]/test"',
@@ -81,7 +81,7 @@ describe 'samba::server::option' do
         let(:params) { { value: [] } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
             'changes' => 'rm "target[. = "global"]/test"',
@@ -94,7 +94,7 @@ describe 'samba::server::option' do
         let(:params) { { value: %w[ssl tls] } }
 
         it {
-          is_expected.to contain_augeas('samba-test').with(
+          is_expected.to contain_augeas('samba option (test=ssl tls)').with(
             'incl' => '/etc/samba/smb.conf',
             'lens' => 'Samba.lns',
             'changes' => 'set "target[. = "global"]/test" "ssl tls"',
