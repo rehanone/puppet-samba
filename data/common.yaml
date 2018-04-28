@@ -1,0 +1,52 @@
+---
+samba::package_manage: true
+samba::package_ensure: 'latest'
+samba::package_server: 'samba'
+samba::package_client: ''
+samba::package_utils: 'cifs-utils'
+samba::config_file: '/etc/samba/smb.conf'
+samba::config_lens: 'Samba.lns'
+samba::service_enable: true
+samba::service_ensure: 'running'
+samba::service_manage: true
+samba::service_name:
+ - 'samba'
+samba::service_ports:
+ - port: 137
+   proto: udp
+ - port: 138
+   proto: udp
+ - port: 139
+   proto: tcp
+ - port: 445
+   proto: tcp
+samba::firewall_manage: false
+
+# Default Config
+samba::workgroup: 'WORKGROUP'
+samba::server_string: '%h server (Samba Server Version %v)'
+samba::netbios_name: "%{facts.hostname}"
+samba::domain_master: null
+samba::preferred_master: null
+samba::local_master: null
+samba::os_level: null
+samba::wins_support: null
+samba::wins_server: null
+samba::name_resolve_order: 'wins lmhosts hosts bcast'
+samba::server_min_protocol: 'SMB2_10'
+samba::client_max_protocol: 'SMB3'
+samba::client_min_protocol: 'SMB2_10'
+samba::hosts_allow: []
+samba::hosts_deny: ['ALL']
+samba::interfaces: []
+samba::bind_interfaces_only: null
+samba::log_file: '/var/log/samba/log.%m'
+samba::max_log_size: 10000
+samba::passdb_backend: 'tdbsam'
+samba::domain_logons: false
+samba::security: 'user'
+samba::encrypt_passwords: true
+samba::unix_password_sync: true
+samba::map_to_guest: 'Never'
+samba::socket_options: 'TCP_NODELAY'
+samba::syslog: null

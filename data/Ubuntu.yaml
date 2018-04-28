@@ -1,0 +1,4 @@
+---
+samba::service_name:
+ - 'smbd'
+ - 'nmbd'
