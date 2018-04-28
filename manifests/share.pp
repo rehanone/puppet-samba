@@ -1,6 +1,6 @@
-# == Define samba::server::share
+# == Define samba::share
 #
-define samba::server::share(
+define samba::share(
   String            $comment,
   Stdlib::Absolutepath
                     $path,
@@ -34,24 +34,26 @@ define samba::server::share(
                     $ensure = present,
 ) {
 
-  $incl    = $samba::server::incl
-  $context = $samba::server::context
+  $incl    = $samba::incl
+  $context = $samba::context
   $target  = "target[. = '${name}']"
+
+  $section_header_change = $ensure ? {
+    present => "set ${target} '${name}'",
+    default => "rm ${target} '${name}'",
+  }
 
   augeas { "${title}-section":
     incl    => $incl,
     lens    => 'Samba.lns',
     context => $context,
-    changes => $ensure ? {
-      present => "set ${target} '${name}'",
-      default => "rm ${target} '${name}'",
-    },
-    notify  => Class['samba::server::service']
+    changes => $section_header_change,
+    notify  => Class['samba::service']
   }
 
-  if $ensure == 'present' {
+  if $ensure == present {
 
-    samba::server::option {
+    samba::option {
       "${title}-comment":              target => $target, key => 'comment',  value => $comment;
       "${title}-path":                 target => $target, key => 'path',     value => $path;
       "${title}-writable":             target => $target, key => 'writable', value => $writable;

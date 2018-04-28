@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'samba::server::option' do
+describe 'samba::option' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
@@ -8,7 +8,7 @@ describe 'samba::server::option' do
       end
 
       let :pre_condition do
-        'class { "samba::server": }'
+        'class { "samba": }'
       end
 
       context 'with boolean true as a value', :compile do

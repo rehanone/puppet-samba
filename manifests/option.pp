@@ -1,11 +1,11 @@
-# == Define samba::server::option
+# == Define samba::option
 #
-define samba::server::option (
+define samba::option (
   String $key         = $title,
   Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,
   String $config_file = $samba::params::config_file,
   String $lens        = 'Samba.lns',
-  String $target      = $samba::server::target,
+  String $target      = $samba::target,
 ) {
   $str_value = $value ? {
     Array   => join($value, ' '),
@@ -24,6 +24,6 @@ define samba::server::option (
     incl    => $config_file,
     lens    => $lens,
     changes => $changes,
-    notify  => Class["${module_name}::server::service"]
+    notify  => Class["${module_name}::service"]
   }
 }
