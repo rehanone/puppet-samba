@@ -33,7 +33,7 @@ class samba (
   Optional[Boolean] $domain_master,
   Optional[Boolean] $preferred_master,
   Optional[Boolean] $local_master,
-  Optional[Integer[255]] $os_level,
+  Optional[Integer[0, 255]] $os_level,
   Optional[Boolean] $wins_support,
   Optional[String] $wins_server,
   Optional[String] $name_resolve_order,
