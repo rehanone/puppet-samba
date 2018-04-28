@@ -55,12 +55,12 @@ class samba (
   Optional[String] $socket_options,
   Optional[String] $syslog,
 
-  Hash $shares                   = lookup('samba::shares', Hash, 'hash', {}),
+  Hash $shares = lookup('samba::shares', Hash, 'hash', {}),
 ) {
 
-  $incl    = $config_file
+  $incl = $config_file
   $context = "/files${incl}"
-  $target  = 'target[. = "global"]'
+  $target = 'target[. = "global"]'
 
   if ($package_ensure in [ 'absent', 'purged' ]) {
     class { "${module_name}::install": }

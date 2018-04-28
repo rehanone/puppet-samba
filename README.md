@@ -25,9 +25,7 @@ The README template below provides a starting point with details about what info
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what problem it solves. This is your 30-second elevator pitch for your module. Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph should answer the questions: "What does this module *do*?" and "Why would I use it?" If your module has a range of functionality (installation, configuration, management, etc.), this is the time to mention it.
+Install, enable and configure a SAMBA Windows share server.
 
 ## Setup
 
@@ -53,7 +51,42 @@ The very basic steps needed for a user to get the module up and running. This ca
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the fancy stuff with your module here. It's especially helpful if you include usage examples and code samples for doing things with your module.
+* `include samba` : Main class to manage a Samba server
+
+## Example Usage
+
+    class { 'samba':
+      workgroup            => 'EXAMPLE',
+      server_string        => 'Example File Server 01',
+      netbios_name         => 'F01',
+      interfaces           => [ 'lo', 'eth0' ],
+      hosts_allow          => [ '127.', '192.168.' ],
+      local_master         => 'yes',
+      map_to_guest         => 'Bad User',
+      os_level             => '50',
+      preferred_master     => 'yes',
+      extra_global_options => [
+        'printing = BSD',
+        'printcap name = /dev/null',
+      ],
+      shares => {
+        'homes' => [
+          'comment = Home Directories',
+          'browseable = no',
+          'writable = yes',
+        ],
+        'pictures' => [
+          'comment = Pictures',
+          'path = /srv/pictures',
+          'browseable = yes',
+          'writable = yes',
+          'guest ok = yes',
+          'available = yes',
+        ],
+      },
+      selinux_enable_home_dirs => true,
+    }
+
 
 ## Reference
 
