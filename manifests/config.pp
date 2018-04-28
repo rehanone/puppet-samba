@@ -4,7 +4,7 @@ class samba::config () inherits samba {
 
   augeas { 'samba-global-section':
     incl    => $samba::incl,
-    lens    => 'Samba.lns',
+    lens    => lookup('samba::config_lens'),
     changes => "set ${samba::target} global",
     notify  => Class["${module_name}::service"]
   }

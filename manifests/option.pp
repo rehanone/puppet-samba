@@ -3,8 +3,8 @@
 define samba::option (
   String $key         = $title,
   Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,
-  String $config_file = $samba::params::config_file,
-  String $lens        = 'Samba.lns',
+  String $config_file = lookup('samba::config_file'),
+  String $lens        = lookup('samba::config_lens'),
   String $target      = $samba::target,
 ) {
   $str_value = $value ? {
