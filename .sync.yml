@@ -10,12 +10,6 @@ appveyor.yml:
     - RUBY_VERSION: 24-x64
       CHECK: rubocop
 
-.gitlab-ci.yml:
-  delete: true
-
-.rubocop_todo.yml:
-  delete: true
-
 .rubocop.yml:
   selected_profile: strict
   default_configs: &default_configs
@@ -26,10 +20,18 @@ appveyor.yml:
       - "./**/*.rb"
       Exclude:
       - Vagrantfile
+    Style/UnneededPercentQ:
+      Enabled: false
 
+.gitlab-ci.yml:
+  delete: true
+
+.rubocop_todo.yml:
+  delete: true
 
 .travis.yml:
   bundler_args: ""
+  branches: {}
 
   script: "\"bundle exec rake release_checks\""
   docker_sets:
@@ -67,33 +69,11 @@ Gemfile:
         from_env: BEAKER_HOSTGENERATOR_VERSION
       - gem: beaker-rspec
         from_env: BEAKER_RSPEC_VERSION
-    ':development':
-      - gem: puppet-blacksmith
-        version: '~> 3.4'
-
-Rakefile:
-  requires:
-    - puppet_blacksmith/rake_tasks
-
-LICENSE:
-  license_type: 'apache2' # Available options 'puppetpe' and 'apache2' (default is apache2)
-
-MAINTAINERS.md:
-  maintainers:
-    - "Puppet Forge Modules Team `forge-modules |at| puppet |dot| com`"
-
-# Apache 2 NOTICE file generation.  Please mark unmanaged:true if using puppetpe license type
-NOTICE:
-  copyright_holders:
-    - name: 'Puppet, Inc.'
-      begin: 'latest'
-    # - name: '<name of holder>' (required)
-    #   begin: <year or 'latest'> (optional) (latest is the year when modsync is run)
-    #   end:   <year or 'latest'> (optional) (latest is the year when modsync is run)
-
-CONTRIBUTING.md:
 
 spec/spec.opts:
+  delete: true
+
+spec/spec_helper_local.rb:
   delete: true
 
 .project:
