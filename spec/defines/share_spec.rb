@@ -20,7 +20,7 @@ describe 'samba::share' do
             writable: true,
             available: false,
             browseable: true,
-            valid_users: %w[ray penny],
+            valid_users: ['ray', 'penny'],
           }
         end
 
@@ -39,7 +39,7 @@ describe 'samba::share' do
           is_expected.to contain_samba__option('APPS-writable').with_key('writable').with_value(true)
           is_expected.to contain_samba__option('APPS-available').with_key('available').with_value(false)
           is_expected.to contain_samba__option('APPS-browseable').with_key('browseable').with_value(true)
-          is_expected.to contain_samba__option('APPS-valid users').with_key('valid users').with_value(%w[ray penny])
+          is_expected.to contain_samba__option('APPS-valid users').with_key('valid users').with_value(['ray', 'penny'])
         }
 
         it {

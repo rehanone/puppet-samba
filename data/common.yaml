@@ -32,7 +32,7 @@ samba::local_master: null
 samba::os_level: null
 samba::wins_support: null
 samba::wins_server: null
-samba::name_resolve_order: 'wins lmhosts hosts bcast'
+samba::name_resolve_order: null
 samba::server_min_protocol: 'SMB2_10'
 samba::client_max_protocol: 'SMB3'
 samba::client_min_protocol: 'SMB2_10'

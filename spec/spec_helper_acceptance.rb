@@ -8,7 +8,7 @@ install_ca_certs unless ENV['PUPPET_INSTALL_TYPE'] =~ %r{pe}i
 install_module_on(hosts)
 install_module_dependencies_on(hosts)
 
-UNSUPPORTED_PLATFORMS = %w[windows AIX Solaris].freeze
+UNSUPPORTED_PLATFORMS = ['Suse', 'windows', 'AIX', 'Solaris'].freeze
 
 RSpec.configure do |c|
   # Readable test descriptions
