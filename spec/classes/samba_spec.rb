@@ -63,7 +63,7 @@ describe 'samba' do
           is_expected.to contain_samba__option('os level').with_value(nil)
           is_expected.to contain_samba__option('wins support').with_value(nil)
           is_expected.to contain_samba__option('wins server').with_value(nil)
-          is_expected.to contain_samba__option('name resolve order').with_value('wins lmhosts hosts bcast')
+          is_expected.to contain_samba__option('name resolve order').with_value(nil)
           is_expected.to contain_samba__option('server min protocol').with_value('SMB2_10')
           is_expected.to contain_samba__option('client max protocol').with_value('SMB3')
           is_expected.to contain_samba__option('client min protocol').with_value('SMB2_10')
@@ -93,7 +93,7 @@ describe 'samba' do
             service_manage: true,
             service_enable: true,
             service_ensure: 'running',
-            service_name: %w[smbd nmbd],
+            service_name: ['smbd', 'nmbd'],
           }
         end
 
