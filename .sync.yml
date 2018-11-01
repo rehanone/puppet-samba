@@ -43,7 +43,7 @@ appveyor.yml:
   - set: docker/centos-7
   docker_defaults:
     # values will replace @@SET@@ with the docker_sets' value
-    rvm: 2.4.4
+    rvm: 2.5.0
     sudo: required
     dist: trusty
     services: docker

@@ -5,5 +5,7 @@ fixtures:
   forge_modules:
     stdlib:
       repo: "puppetlabs/stdlib"
+    augeas_core:
+      repo: "puppetlabs/augeas_core"
   symlinks:
     samba: "#{source_dir}"
