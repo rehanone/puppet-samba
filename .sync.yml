@@ -1,15 +1,4 @@
 ---
-appveyor.yml:
-  environment:
-  PUPPET_GEM_VERSION: "~> 4.0"
-  matrix:
-  - RUBY_VERSION: 24-x64
-    CHECK: "syntax lint"
-  - RUBY_VERSION: 24-x64
-    CHECK: metadata_lint
-  - RUBY_VERSION: 24-x64
-    CHECK: rubocop
-
 .rubocop.yml:
   selected_profile: strict
   default_configs: &default_configs
@@ -17,9 +6,9 @@ appveyor.yml:
       DisplayCopNames: true
       TargetRubyVersion: '2.1'
       Include:
-      - "./**/*.rb"
+        - "./**/*.rb"
       Exclude:
-      - Vagrantfile
+        - Vagrantfile
     Style/UnneededPercentQ:
       Enabled: false
 
@@ -31,46 +20,25 @@ appveyor.yml:
 
 .travis.yml:
   bundler_args: ""
-  branches: {}
-
-  script: "\"bundle exec rake release_checks\""
   docker_sets:
-  - set: docker/ubuntu-18.04
-  - set: docker/ubuntu-16.04
-  - set: docker/ubuntu-14.04
-#  - set: docker/debian-9
-#  - set: docker/debian-8
-  - set: docker/centos-7
+    - set: docker/ubuntu-18.04
+    - set: docker/ubuntu-16.04
+    - set: docker/ubuntu-14.04
+#    - set: docker/debian-9
+#    - set: docker/debian-8
+    - set: docker/centos-7
   docker_defaults:
-    # values will replace @@SET@@ with the docker_sets' value
-    rvm: 2.5.0
-    sudo: required
-    dist: trusty
-    services: docker
-    env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_set=@@SET@@
-    script: bundle exec rake beaker
 
 Gemfile:
   required:
     ':system_tests':
-    - gem: 'puppet-module-posix-system-r#{minor_version}'
-      platforms: ruby
-    - gem: 'puppet-module-win-system-r#{minor_version}'
-      platforms:
-      - mswin
-      - mingw
-      - x64_mingw
-    - gem: beaker
-      version: '~> 3.13'
-      from_env: BEAKER_VERSION
-    - gem: beaker-abs
-      from_env: BEAKER_ABS_VERSION
-      version: '~> 0.1'
-    - gem: beaker-pe
-    - gem: beaker-hostgenerator
-      from_env: BEAKER_HOSTGENERATOR_VERSION
-    - gem: beaker-rspec
-      from_env: BEAKER_RSPEC_VERSION
+      - gem: 'puppet-module-posix-system-r#{minor_version}'
+        platforms: ruby
+      - gem: 'puppet-module-win-system-r#{minor_version}'
+        platforms:
+          - mswin
+          - mingw
+          - x64_mingw
 
 spec/spec.opts:
   delete: true
@@ -87,10 +55,11 @@ locales/config.yaml:
   bugs_address: 'https://github.com/rehanone'
   default_locale: 'en'
   source_files:
-  - './lib/**/*.rb'
+    - './lib/**/*.rb'
 
 spec/acceptance/nodesets/centos-7-x64.yml:
 spec/acceptance/nodesets/debian-8-x64.yml:
+spec/acceptance/nodesets/debian-9-x64.yml:
 spec/acceptance/nodesets/default.yml:
 spec/acceptance/nodesets/docker/centos-7.yml:
 spec/acceptance/nodesets/docker/debian-8.yml:
