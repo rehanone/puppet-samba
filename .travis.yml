@@ -1,5 +1,5 @@
 ---
-dist: trusty
+dist: xenial
 language: ruby
 cache: bundler
 before_install:
@@ -9,8 +9,8 @@ before_install:
   - gem --version
   - bundle -v
 script:
-  - 'bundle exec rake $CHECK'
-bundler_args: 
+  - 'SIMPLECOV=yes bundle exec rake $CHECK'
+bundler_args: --without system_tests
 rvm:
   - 2.5.3
 stages:
@@ -53,6 +53,24 @@ matrix:
     -
       bundler_args: --with system_tests
       dist: trusty
+      env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-9 BEAKER_TESTMODE=apply
+      rvm: 2.5.3
+      script: bundle exec rake beaker
+      services: docker
+      stage: acceptance
+      sudo: required
+    -
+      bundler_args: --with system_tests
+      dist: trusty
+      env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-8 BEAKER_TESTMODE=apply
+      rvm: 2.5.3
+      script: bundle exec rake beaker
+      services: docker
+      stage: acceptance
+      sudo: required
+    -
+      bundler_args: --with system_tests
+      dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/centos-7 BEAKER_TESTMODE=apply
       rvm: 2.5.3
       script: bundle exec rake beaker
@@ -81,9 +99,9 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: puppet
+  user: rehanone
   password:
-    secure: ""
+    secure: "WiS9j4aI93DobVH/O/z6aHKOY8UL2hwn4+fflKuhvZzJPxfsYYfvQsyX43qetpVAIW7DCZLfO1QQlLF1/ywhe8Y9XRy923R6E7WckYPCGtGBpeTdS7p3Biss2H+ikxI9/5UFlewrdFxLxqgKz8lGLCt8zL1r7ggPWjJBfWEBtk2J9mj4BRTTGt6SWTSHwkdqjloQsPu32SXWY4nsU+87p+lO49YTOH2cS+54/DRCpccPl2AL+kXISDGiDZtlMyGdL2c0Z1e8etmOxbHN2X80YyOQY2GiKdGhzVfx5TDPElDXkOO5JkkZWmsz2D6BJYvu+s9awIJ6/pzGFDghZIK2MSgfUjJd9Vwt1lm48kHKsJ3DsSRIOHK+2ft/3nUl8y7j7KKQMcKKVN35/0uy/cXnD4acuxCh84e5bc0pmYy0gxLhLF6C9Ahv8pls7HhA+jaoUBNXIgCb685w6EgrkaeGMx1vz7VfZo56viod/zZ7XCXg8o5s7vthKMtYLnuGIEl2DvBC3KKtGvl4RnzFVUcZcB5lHgLZozskcwuWFtqd/AgqdIVRzKc6KmRWo8TkE/qOV79MaUpKGONmLMQfsz01HMn4m/NAmu4J55kFgFYkrkwy+9c/3Z9Ytce7goOnyxYYd0fFfaSM8vJCl7oe8Zb3znK2atMmpQAfDwYBwUNe1jU="
   on:
     tags: true
     all_branches: true
