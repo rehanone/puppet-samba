@@ -1,17 +1,4 @@
 ---
-.rubocop.yml:
-  selected_profile: strict
-  default_configs: &default_configs
-    AllCops:
-      DisplayCopNames: true
-      TargetRubyVersion: '2.1'
-      Include:
-        - "./**/*.rb"
-      Exclude:
-        - Vagrantfile
-    Style/UnneededPercentQ:
-      Enabled: false
-
 appveyor.yml:
   delete: true
 
@@ -30,10 +17,10 @@ appveyor.yml:
     - set: docker/ubuntu-18.04
     - set: docker/ubuntu-16.04
     - set: docker/ubuntu-14.04
+    - set: docker/debian-10
     - set: docker/debian-9
     - set: docker/debian-8
     - set: docker/centos-7
-  docker_defaults:
 
 Gemfile:
   required:
