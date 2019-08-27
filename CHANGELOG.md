@@ -1,11 +1,5 @@
-# Changelog
+## 1.0.0 (August 25, 2019)
 
-All notable changes to this project will be documented in this file.
+Features:
 
-## Release 0.1.0
-
-**Features**
-
-**Bugfixes**
-
-**Known Issues**
+  - Initial release

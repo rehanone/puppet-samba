@@ -1,6 +1,6 @@
 {
   "name": "rehan-samba",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Rehan Mahmood",
   "summary": "Install, manage and configure samba server, client and shares.",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     },
     {
       "name": "puppetlabs-augeas_core",
-      "version_requirement": ">= 1.0.0 < 2.0.0"
+      "version_requirement": ">= 1.0.0 < 3.0.0"
     }
   ],
   "operatingsystem_support": [
