@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 3.2.0 < 6.0.0"
+      "version_requirement": ">= 5.0.0 < 7.0.0"
     },
     {
       "name": "puppetlabs-augeas_core",
@@ -21,13 +21,16 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
+        "5",
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
+        "5",
         "6",
         "7"
       ]
@@ -35,6 +38,7 @@
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
+        "5",
         "6",
         "7"
       ]
@@ -42,28 +46,35 @@
     {
       "operatingsystem": "Scientific",
       "operatingsystemrelease": [
+        "5",
         "6",
         "7"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "29",
+        "30"
       ]
     },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "8",
-        "9"
+        "9",
+        "10"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "14.04",
-        "15.10",
         "16.04",
-        "16.10",
-        "17.04",
         "17.10",
         "18.04",
-        "18.10"
+        "18.10",
+        "19.04"
       ]
     },
     {
@@ -82,7 +93,7 @@
     "smb",
     "wins"
   ],
-  "pdk-version": "1.11.1",
-  "template-url": "pdk-default#1.11.1",
-  "template-ref": "1.11.1-0-g2ff8c24"
+  "pdk-version": "1.12.0",
+  "template-url": "pdk-default#1.12.0",
+  "template-ref": "1.12.0-0-g55d9ae2"
 }
