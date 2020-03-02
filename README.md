@@ -65,26 +65,21 @@ The very basic steps needed for a user to get the module up and running. This ca
       map_to_guest         => 'Bad User',
       os_level             => '50',
       preferred_master     => 'yes',
-      extra_global_options => [
-        'printing = BSD',
-        'printcap name = /dev/null',
-      ],
       shares => {
-        'homes' => [
-          'comment = Home Directories',
-          'browseable = no',
-          'writable = yes',
-        ],
-        'pictures' => [
-          'comment = Pictures',
-          'path = /srv/pictures',
-          'browseable = yes',
-          'writable = yes',
-          'guest ok = yes',
-          'available = yes',
-        ],
+        'homes' => {
+          comment    => 'Home Directories',
+          browseable => false,
+          writable   => true,
+        },
+        'pictures' => {
+          comment    => 'Pictures',
+          path       => '/srv/pictures',
+          browseable => true,
+          writable   => true,
+          guest ok   => true,
+          available  => true,
+        },
       },
-      selinux_enable_home_dirs => true,
     }
 
 

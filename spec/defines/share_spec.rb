@@ -43,7 +43,7 @@ describe 'samba::share' do
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(53)
+          is_expected.to have_samba__option_resource_count(54)
         }
       end
     end

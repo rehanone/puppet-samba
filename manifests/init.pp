@@ -54,6 +54,7 @@ class samba (
   Optional[Boolean] $unix_password_sync,
   Optional[String] $socket_options,
   Optional[String] $syslog,
+  Optional[Boolean] $ntlm_auth,
 
   Hash $shares = lookup('samba::shares', Hash, 'hash', {}),
 ) {

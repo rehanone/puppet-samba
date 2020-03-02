@@ -1,9 +1,9 @@
 # == Define samba::share
 #
 define samba::share(
-  String            $comment,
-  Stdlib::Absolutepath
-                    $path,
+  Optional[String]  $comment = undef,
+  Optional[Stdlib::Absolutepath]
+                    $path = undef,
   Optional[Boolean] $writable = undef,
   Optional[Boolean] $available = undef,
   Optional[Boolean] $browseable = undef,
@@ -52,6 +52,12 @@ define samba::share(
   }
 
   if $ensure == present {
+    if $comment == undef {
+        fail('parameter "comment" must be set')
+    }
+    if $path == undef {
+        fail('parameter "path" must be set')
+    }
 
     samba::option {
       "${title}-comment":              target => $target, key => 'comment',  value => $comment;
