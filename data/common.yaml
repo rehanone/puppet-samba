@@ -50,3 +50,4 @@ samba::unix_password_sync: true
 samba::map_to_guest: 'Never'
 samba::socket_options: 'TCP_NODELAY'
 samba::syslog: null
+samba::ntlm_auth: false

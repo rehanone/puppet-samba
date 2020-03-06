@@ -36,6 +36,7 @@ class samba::config () inherits samba {
     'log file':             value => $samba::log_file;
     'max log size':         value => $samba::max_log_size;
     'syslog':               value => $samba::syslog;
+    'ntlm auth':            value => $samba::ntlm_auth;
   }
 
   create_resources('samba::share', $samba::shares)
