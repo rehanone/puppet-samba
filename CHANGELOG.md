@@ -1,3 +1,24 @@
+## 1.2.0 (March 12, 2020)
+
+Improvements:
+
+- `samba::ntlm_auth param`
+
+  This allows enabling NTLMv1 authentication which nowadays is
+  disabled by default due to being insecure.  However, some users may
+  require this for backwards compatibility, e.g., Sonos does not
+  support NTLMv2 or any other choice for that matter.
+  ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
+
+Bugfixes:
+
+- README uses bogus param extra_global_options. ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
+- README uses bogus param selinux_enable_home_dirs. ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
+- README is wrong for samba::shares usage. ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
+
+  The `samba::share` define expects these params as a hash. Furthermore,
+  it expects proper Boolean values instead of `yes/no` strings.
+
 ## 1.1.0 (February 13, 2020)
 
 Improvements:
