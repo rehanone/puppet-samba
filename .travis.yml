@@ -1,4 +1,5 @@
 ---
+os: linux
 dist: xenial
 language: ruby
 cache: bundler
@@ -15,7 +16,7 @@ script:
   - 'SIMPLECOV=yes bundle exec rake $CHECK'
 bundler_args: --without system_tests
 rvm:
-  - 2.5.3
+  - 2.5.7
 stages:
   - static
   - spec
@@ -23,14 +24,23 @@ stages:
   -
     if: tag =~ ^v\d
     name: deploy
-matrix:
+jobs:
   fast_finish: true
   include:
     -
       bundler_args: --with system_tests
       dist: trusty
+      env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/ubuntu-20.04 BEAKER_TESTMODE=apply
+      rvm: 2.5.7
+      script: bundle exec rake beaker
+      services: docker
+      stage: acceptance
+      sudo: required
+    -
+      bundler_args: --with system_tests
+      dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/ubuntu-18.04 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -39,7 +49,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/ubuntu-16.04 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -48,7 +58,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/ubuntu-14.04 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -57,7 +67,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-10 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -66,7 +76,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-9 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -75,7 +85,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-8 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -84,7 +94,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/centos-8 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -93,7 +103,7 @@ matrix:
       bundler_args: --with system_tests
       dist: trusty
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/centos-7 BEAKER_TESTMODE=apply
-      rvm: 2.5.3
+      rvm: 2.5.7
       script: bundle exec rake beaker
       services: docker
       stage: acceptance
@@ -107,7 +117,7 @@ matrix:
       stage: spec
     -
       env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
-      rvm: 2.5.3
+      rvm: 2.5.7
       stage: spec
     -
       env: DEPLOY_TO_FORGE=yes
@@ -120,7 +130,7 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: rehanone
+  username: rehanone
   password:
     secure: "WiS9j4aI93DobVH/O/z6aHKOY8UL2hwn4+fflKuhvZzJPxfsYYfvQsyX43qetpVAIW7DCZLfO1QQlLF1/ywhe8Y9XRy923R6E7WckYPCGtGBpeTdS7p3Biss2H+ikxI9/5UFlewrdFxLxqgKz8lGLCt8zL1r7ggPWjJBfWEBtk2J9mj4BRTTGt6SWTSHwkdqjloQsPu32SXWY4nsU+87p+lO49YTOH2cS+54/DRCpccPl2AL+kXISDGiDZtlMyGdL2c0Z1e8etmOxbHN2X80YyOQY2GiKdGhzVfx5TDPElDXkOO5JkkZWmsz2D6BJYvu+s9awIJ6/pzGFDghZIK2MSgfUjJd9Vwt1lm48kHKsJ3DsSRIOHK+2ft/3nUl8y7j7KKQMcKKVN35/0uy/cXnD4acuxCh84e5bc0pmYy0gxLhLF6C9Ahv8pls7HhA+jaoUBNXIgCb685w6EgrkaeGMx1vz7VfZo56viod/zZ7XCXg8o5s7vthKMtYLnuGIEl2DvBC3KKtGvl4RnzFVUcZcB5lHgLZozskcwuWFtqd/AgqdIVRzKc6KmRWo8TkE/qOV79MaUpKGONmLMQfsz01HMn4m/NAmu4J55kFgFYkrkwy+9c/3Z9Ytce7goOnyxYYd0fFfaSM8vJCl7oe8Zb3znK2atMmpQAfDwYBwUNe1jU="
   on:
