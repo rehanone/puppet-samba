@@ -14,6 +14,7 @@ appveyor.yml:
   user: rehanone
   secure: "WiS9j4aI93DobVH/O/z6aHKOY8UL2hwn4+fflKuhvZzJPxfsYYfvQsyX43qetpVAIW7DCZLfO1QQlLF1/ywhe8Y9XRy923R6E7WckYPCGtGBpeTdS7p3Biss2H+ikxI9/5UFlewrdFxLxqgKz8lGLCt8zL1r7ggPWjJBfWEBtk2J9mj4BRTTGt6SWTSHwkdqjloQsPu32SXWY4nsU+87p+lO49YTOH2cS+54/DRCpccPl2AL+kXISDGiDZtlMyGdL2c0Z1e8etmOxbHN2X80YyOQY2GiKdGhzVfx5TDPElDXkOO5JkkZWmsz2D6BJYvu+s9awIJ6/pzGFDghZIK2MSgfUjJd9Vwt1lm48kHKsJ3DsSRIOHK+2ft/3nUl8y7j7KKQMcKKVN35/0uy/cXnD4acuxCh84e5bc0pmYy0gxLhLF6C9Ahv8pls7HhA+jaoUBNXIgCb685w6EgrkaeGMx1vz7VfZo56viod/zZ7XCXg8o5s7vthKMtYLnuGIEl2DvBC3KKtGvl4RnzFVUcZcB5lHgLZozskcwuWFtqd/AgqdIVRzKc6KmRWo8TkE/qOV79MaUpKGONmLMQfsz01HMn4m/NAmu4J55kFgFYkrkwy+9c/3Z9Ytce7goOnyxYYd0fFfaSM8vJCl7oe8Zb3znK2atMmpQAfDwYBwUNe1jU="
   docker_sets:
+    - set: docker/ubuntu-20.04
     - set: docker/ubuntu-18.04
     - set: docker/ubuntu-16.04
     - set: docker/ubuntu-14.04

@@ -74,7 +74,8 @@
         "18.04",
         "18.10",
         "19.04",
-        "19.10"
+        "19.10",
+        "20.04"
       ]
     },
     {
@@ -93,7 +94,7 @@
     "smb",
     "wins"
   ],
-  "pdk-version": "1.16.0",
-  "template-url": "pdk-default#1.16.0",
-  "template-ref": "tags/1.16.0-0-gaf44904"
+  "pdk-version": "1.17.0",
+  "template-url": "pdk-default#1.17.0",
+  "template-ref": "tags/1.17.0-0-gd3a4319"
 }
