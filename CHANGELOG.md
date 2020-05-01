@@ -1,3 +1,11 @@
+## 1.3.0 (April 29, 2020)
+
+Improvements:
+
+- Added support for Ubuntu 20.04.
+- Updated `pdk` templates.
+- Apply firewall rules if `ferm` is defined as firewall manager. It uses [ferm](https://forge.puppet.com/puppet/ferm) module for managing `ferm`.
+
 ## 1.2.0 (March 12, 2020)
 
 Improvements:
