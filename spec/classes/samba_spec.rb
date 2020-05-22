@@ -72,7 +72,7 @@ describe 'samba' do
           is_expected.to contain_samba__option('interfaces').with_value([])
           is_expected.to contain_samba__option('bind interfaces only').with_value(nil)
           is_expected.to contain_samba__option('security').with_value('user')
-          is_expected.to contain_samba__option('encrypt passwords').with_value(true)
+          is_expected.to contain_samba__option('encrypt passwords').with_value(nil)
           is_expected.to contain_samba__option('unix password sync').with_value(true)
           is_expected.to contain_samba__option('socket options').with_value('TCP_NODELAY')
           is_expected.to contain_samba__option('map to guest').with_value('Never')
