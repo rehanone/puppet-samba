@@ -45,7 +45,7 @@ samba::max_log_size: 10000
 samba::passdb_backend: 'tdbsam'
 samba::domain_logons: false
 samba::security: 'user'
-samba::encrypt_passwords: true
+samba::encrypt_passwords: null
 samba::unix_password_sync: true
 samba::map_to_guest: 'Never'
 samba::socket_options: 'TCP_NODELAY'
