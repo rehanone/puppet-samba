@@ -1,3 +1,8 @@
+## 1.3.1 (May 22, 2020)
+
+- Changed default value `encrypt passwords` to undef as it is deprecated in Samba.
+- Updated `pdk` templates.
+
 ## 1.3.0 (April 29, 2020)
 
 Improvements:
