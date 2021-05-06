@@ -1,109 +1,124 @@
+# rehan-samba
 
-# samba
-
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
-
-The README template below provides a starting point with details about what information to include in your README.
-
-
-
-
-
-
+[![Puppet Forge](http://img.shields.io/puppetforge/v/rehan/git.svg)](https://forge.puppetlabs.com/rehan/samba) [![Build Status](https://travis-ci.com/rehanone/puppet-samba.svg?branch=master)](https://travis-ci.com/rehanone/puppet-samba)
 
 #### Table of Contents
+1. [Overview](#overview)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
+4. [Usage](#usage)
+    * [Classes](#classes)
+    * [Referances](#referances)
+5. [Dependencies](#dependencies)
+6. [Development](#development)
 
-1. [Description](#description)
-2. [Setup - The basics of getting started with samba](#setup)
-    * [What samba affects](#what-samba-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with samba](#beginning-with-samba)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+## Overview
+The `rehan-samba` module manages the Samba/CIFS, the virtual filesystem based on SMB protocol.
 
-## Description
+## Module Description
+A puppet module for managing the installation and configuration of [samba](https://www.samba.org/). This module installs and configures the samba server and client packages and allows configuration of user
+specific SMB shares.
 
-Install, enable and configure a SAMBA Windows share server.
+#### Implemented Features:
+* Installs samba server package
+* Installs samba client package
+* Allows managing global SMB configurations parameters.
+* Allows managing SMB shares.
 
 ## Setup
+In order to install `rehan-samba`, run the following command:
+```bash
+$ puppet module install rehan-samba
+```
+The module does expect all the data to be provided through 'Hiera'. See [Usage](#usage) for examples on how to configure it.
 
-### What samba affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with samba
-
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+#### Requirements
+This module is designed to be as clean and compliant with latest puppet code guidelines.
 
 ## Usage
 
-* `include samba` : Main class to manage a Samba server
-
-## Example Usage
+### Example Usage (puppet dsl)
 
     class { 'samba':
+      package_ensure       => 'installed'
+      os_level             => 50,
       workgroup            => 'EXAMPLE',
+      wins_server          => '10.10.10.10',
       server_string        => 'Example File Server 01',
       netbios_name         => 'F01',
       interfaces           => [ 'lo', 'eth0' ],
       hosts_allow          => [ '127.', '192.168.' ],
+      hosts_deny           => [ 'ALL' ]
       local_master         => 'yes',
-      map_to_guest         => 'Bad User',
-      os_level             => '50',
       preferred_master     => 'yes',
+      map_to_guest         => 'Bad User',
       shares => {
         'homes' => {
           comment    => 'Home Directories',
           browseable => false,
+          path       => '/home',
           writable   => true,
         },
         'pictures' => {
-          comment    => 'Pictures',
-          path       => '/srv/pictures',
-          browseable => true,
-          writable   => true,
-          guest ok   => true,
-          available  => true,
+          comment        => 'Pictures',
+          path           => '/srv/pictures',
+          browseable     => true,
+          writable       => true,
+          create_mask    => '1777',
+          directory_mask => '1777',
         },
       },
     }
 
 
-## Reference
+### Example Usage (hiera)
 
-Users need a complete list of your module's classes, types, defined types providers, facts, and functions, along with the parameters for each. You can provide this list either via Puppet Strings code comments or as a complete list in the README Reference section.
+All of this data can be provided through `Hiera`.
 
-* If you are using Puppet Strings code comments, this Reference section should include Strings information so that your users know how to access your documentation.
+**YAML**
+```yaml
+samba::package_ensure: 'installed'
+samba::os_level: 50
+samba::workgroup: 'EXAMPLE'
+samba::wins_server: '10.10.10.10'
+samba::server_string: 'Example File Server 01'
+samba::netbios_name: 'F01'
+samba::interfaces:
+   - 'lo'
+   - 'eth0'
+samba::hosts_allow:
+   - '127.'
+   - '192.168.'
+samba::hosts_deny:
+   - 'ALL'
+samba::local_master: 'yes'
+samba::preferred_master: 'yes'
+samba::map_to_guest: 'Bad User'
+samba::firewall_manage: true
+samba::shares:
+   'homes':
+      comment: 'Home Directories'
+      browseable: false
+      path: '/home'
+      writable: true
+    'pictures':
+      comment: 'Pictures'
+      path: '/srv/pictures'
+      browseable: true
+      writable: true
+      create_mask: '1777'
+      directory_mask: '1777'
+```
 
-* If you are not using Puppet Strings, include a list of all of your classes, defined types, and so on, along with their parameters. Each element in this listing should include:
+## Dependencies
 
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
+* [stdlib][1]
+* [augeas_core][2]
 
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc. If there are Known Issues, you might want to include them under their own heading here.
+[1]:https://forge.puppet.com/puppetlabs/stdlib
+[2]:https://forge.puppet.com/puppetlabs/augeas_core
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+You can submit pull requests and create issues through the official page of this module on [GitHub](https://github.com/rehan/puppet-samba).
+Please do report any bug and suggest new features/improvements.
