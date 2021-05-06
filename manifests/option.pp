@@ -24,6 +24,6 @@ define samba::option (
     incl    => $config_file,
     lens    => $lens,
     changes => $changes,
-    notify  => Class["${module_name}::service"]
+    notify  => Class["${module_name}::service"],
   }
 }

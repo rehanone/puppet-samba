@@ -1,16 +1,26 @@
 ---
+common:
+  disable_legacy_facts: true
+
 appveyor.yml:
   delete: true
 
 .gitlab-ci.yml:
   delete: true
 
+.gitpod.Dockerfile:
+  unmanaged: false
+.gitpod.yml:
+  unmanaged: false
+
 .rubocop_todo.yml:
   delete: true
 
 .travis.yml:
-  simplecov: true
-  deploy: true
+  dist: focal
+  simplecov: false
+  before_install_pre:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin || true
   user: rehanone
   secure: "WiS9j4aI93DobVH/O/z6aHKOY8UL2hwn4+fflKuhvZzJPxfsYYfvQsyX43qetpVAIW7DCZLfO1QQlLF1/ywhe8Y9XRy923R6E7WckYPCGtGBpeTdS7p3Biss2H+ikxI9/5UFlewrdFxLxqgKz8lGLCt8zL1r7ggPWjJBfWEBtk2J9mj4BRTTGt6SWTSHwkdqjloQsPu32SXWY4nsU+87p+lO49YTOH2cS+54/DRCpccPl2AL+kXISDGiDZtlMyGdL2c0Z1e8etmOxbHN2X80YyOQY2GiKdGhzVfx5TDPElDXkOO5JkkZWmsz2D6BJYvu+s9awIJ6/pzGFDghZIK2MSgfUjJd9Vwt1lm48kHKsJ3DsSRIOHK+2ft/3nUl8y7j7KKQMcKKVN35/0uy/cXnD4acuxCh84e5bc0pmYy0gxLhLF6C9Ahv8pls7HhA+jaoUBNXIgCb685w6EgrkaeGMx1vz7VfZo56viod/zZ7XCXg8o5s7vthKMtYLnuGIEl2DvBC3KKtGvl4RnzFVUcZcB5lHgLZozskcwuWFtqd/AgqdIVRzKc6KmRWo8TkE/qOV79MaUpKGONmLMQfsz01HMn4m/NAmu4J55kFgFYkrkwy+9c/3Z9Ytce7goOnyxYYd0fFfaSM8vJCl7oe8Zb3znK2atMmpQAfDwYBwUNe1jU="
   docker_sets:
@@ -23,17 +33,62 @@ appveyor.yml:
     - set: docker/debian-8
     - set: docker/centos-8
     - set: docker/centos-7
+  docker_defaults:
+    dist: focal
+  branches:
+    - master
+  remove_branches:
+    - main
+
+.pdkignore:
+  paths:
+    - /.editorconfig
 
 Gemfile:
   required:
+    ':development':
+      - gem: 'puppet-lint-absolute_template_path'
+      - gem: 'puppet-lint-absolute_classname-check'
+      - gem: 'puppet-lint-alias-check'
+      - gem: 'puppet-lint-classes_and_types_beginning_with_digits-check'
+      - gem: 'puppet-lint-concatenated_template_files-check'
+      - gem: 'puppet-lint-file_ensure-check'
+      - gem: 'puppet-lint-file_source_rights-check'
+      - gem: 'puppet-lint-leading_zero-check'
+      - gem: 'puppet-lint-resource_reference_syntax'
+      - gem: 'puppet-lint-strict_indent-check'
+      - gem: 'puppet-lint-top_scope_facts-check'
+      - gem: 'puppet-lint-topscope-variable-check'
+      - gem: 'puppet-lint-trailing_comma-check'
+      - gem: 'puppet-lint-unquoted_string-check'
+      - gem: 'puppet-lint-variable_contains_upcase'
+      - gem: 'puppet-lint-version_comparison-check'
+    # https://github.com/puppetlabs/pdk-templates#enabling-beaker-system-tests
     ':system_tests':
       - gem: 'puppet-module-posix-system-r#{minor_version}'
+        version: '~> 1.0'
         platforms: ruby
       - gem: 'puppet-module-win-system-r#{minor_version}'
+        version: '~> 1.0'
         platforms:
           - mswin
           - mingw
           - x64_mingw
+      - gem: 'beaker'
+        version: '~> 4.0'
+      - gem: 'beaker-hostgenerator'
+      - gem: 'beaker-puppet'
+      - gem: 'beaker-puppet_install_helper'
+      - gem: 'beaker-module_install_helper'
+      - gem: 'beaker-rspec'
+      - gem: 'beaker-docker'
+
+Rakefile:
+  linter_fail_on_warnings: true
+
+spec/spec_helper.rb:
+  mock_with: ':rspec'
+  coverage_report: true
 
 spec/spec.opts:
   delete: true

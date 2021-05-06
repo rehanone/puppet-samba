@@ -1,3 +1,5 @@
+# samba::config
+#
 class samba::config () inherits samba {
 
   assert_private("Use of private class ${name} by ${caller_module_name}")
@@ -6,7 +8,7 @@ class samba::config () inherits samba {
     incl    => $samba::incl,
     lens    => lookup('samba::config_lens'),
     changes => "set ${samba::target} global",
-    notify  => Class["${module_name}::service"]
+    notify  => Class["${module_name}::service"],
   }
 
   samba::option {
