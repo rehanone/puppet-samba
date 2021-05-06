@@ -1,11 +1,26 @@
+## 1.4.0 (May 6, 2021)
+
+**Features:**
+
+- Added support for openSUSE Leap 15.
+- Added support for Puppet 7.
+
+**Improvements:**
+
+- Updated `pdk` templates.
+- Updated os support matrix.
+- Added system tests for openSUSE Leap 15.
+
 ## 1.3.1 (May 22, 2020)
+
+**Improvements:**
 
 - Changed default value `encrypt passwords` to undef as it is deprecated in Samba.
 - Updated `pdk` templates.
 
 ## 1.3.0 (April 29, 2020)
 
-Improvements:
+**Improvements:**
 
 - Added support for Ubuntu 20.04.
 - Updated `pdk` templates.
@@ -13,7 +28,7 @@ Improvements:
 
 ## 1.2.0 (March 12, 2020)
 
-Improvements:
+**Improvements:**
 
 - `samba::ntlm_auth param`
 
@@ -23,7 +38,7 @@ Improvements:
   support NTLMv2 or any other choice for that matter.
   ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
 
-Bugfixes:
+**Bugfixes:**
 
 - README uses bogus param extra_global_options. ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
 - README uses bogus param selinux_enable_home_dirs. ([#12](https://github.com/rehanone/puppet-samba/pull/12); jflorian)
@@ -34,7 +49,7 @@ Bugfixes:
 
 ## 1.1.0 (February 13, 2020)
 
-Improvements:
+**Improvements:**
 
 - Added support for CentOS 8.
 - Updated os support matrix.
@@ -42,6 +57,6 @@ Improvements:
 
 ## 1.0.0 (August 25, 2019)
 
-Features:
+**Features:**
 
   - Initial release
