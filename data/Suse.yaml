@@ -1,0 +1,5 @@
+---
+samba::package_client: 'samba-client'
+samba::service_name:
+ - 'smb'
+ - 'nmb'
