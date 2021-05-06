@@ -1,46 +1,43 @@
 # == Define samba::share
 #
-define samba::share(
-  Optional[String]  $comment = undef,
-  Optional[Stdlib::Absolutepath]
-                    $path = undef,
-  Optional[Boolean] $writable = undef,
-  Optional[Boolean] $available = undef,
-  Optional[Boolean] $browseable = undef,
-  Optional[String]  $copy = undef,
-  Optional[String]  $create_mask = undef,
-  Optional[String]  $directory_mask = undef,
-  Optional[String]  $force_group = undef,
-  Optional[String]  $force_user = undef,
-  Optional[String]  $guest_account = undef,
-  Optional[Boolean] $guest_ok = undef,
-  Optional[Boolean] $guest_only = undef,
-  Optional[Boolean] $hide_unreadable = undef,
-  Optional[Boolean] $read_only = undef,
-  Optional[Boolean] $public = undef,
-  Optional[Boolean] $printable = undef,
-  Optional[Array[String]]
-                    $valid_users = undef,
-  Optional[Boolean] $follow_symlinks = undef,
-  Optional[Boolean] $wide_links = undef,
-  Optional[Boolean] $map_acl_inherit = undef,
-  Optional[Boolean] $store_dos_attributes = undef,
-  Optional[Boolean] $strict_allocate = undef,
-  Optional[String]  $oplocks = undef,
-  Optional[String]  $level2_oplocks = undef,
-  Optional[String]  $veto_oplock_files = undef,
-  Optional[String]  $write_list = undef,
-  Enum[present, absent]
-                    $ensure = present,
+define samba::share (
+  Optional[String]  $comment                  = undef,
+  Optional[Stdlib::Absolutepath] $path        = undef,
+  Optional[Boolean] $writable                 = undef,
+  Optional[Boolean] $available                = undef,
+  Optional[Boolean] $browseable               = undef,
+  Optional[String]  $copy                     = undef,
+  Optional[String]  $create_mask              = undef,
+  Optional[String]  $directory_mask           = undef,
+  Optional[String]  $force_group              = undef,
+  Optional[String]  $force_user               = undef,
+  Optional[String]  $guest_account            = undef,
+  Optional[Boolean] $guest_ok                 = undef,
+  Optional[Boolean] $guest_only               = undef,
+  Optional[Boolean] $hide_unreadable          = undef,
+  Optional[Boolean] $read_only                = undef,
+  Optional[Boolean] $public                   = undef,
+  Optional[Boolean] $printable                = undef,
+  Optional[Array[String]]        $valid_users = undef,
+  Optional[Boolean] $follow_symlinks          = undef,
+  Optional[Boolean] $wide_links               = undef,
+  Optional[Boolean] $map_acl_inherit          = undef,
+  Optional[Boolean] $store_dos_attributes     = undef,
+  Optional[Boolean] $strict_allocate          = undef,
+  Optional[String]  $oplocks                  = undef,
+  Optional[String]  $level2_oplocks           = undef,
+  Optional[String]  $veto_oplock_files        = undef,
+  Optional[String]  $write_list               = undef,
+  Enum[present, absent]          $ensure      = present,
 ) {
 
-  $incl    = $samba::incl
+  $incl = $samba::incl
   $context = $samba::context
-  $target  = "target[. = '${name}']"
+  $target = "target[. = '${name}']"
 
   $section_header_change = $ensure ? {
-    present => "set ${target} '${name}'",
-    default => "rm ${target} '${name}'",
+    'present' => "set ${target} '${name}'",
+    default   => "rm ${target} '${name}'",
   }
 
   augeas { "${title}-section":
@@ -48,15 +45,15 @@ define samba::share(
     lens    => 'Samba.lns',
     context => $context,
     changes => $section_header_change,
-    notify  => Class['samba::service']
+    notify  => Class['samba::service'],
   }
 
   if $ensure == present {
     if $comment == undef {
-        fail('parameter "comment" must be set')
+      fail('parameter "comment" must be set')
     }
     if $path == undef {
-        fail('parameter "path" must be set')
+      fail('parameter "path" must be set')
     }
 
     samba::option {

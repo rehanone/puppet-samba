@@ -13,17 +13,14 @@ class samba (
   String  $package_client,
   String  $package_utils,
   String  $config_file,
-  Variant[Enum[mask, manual], Boolean]
-          $service_enable,
-  Enum[stopped, running]
-          $service_ensure,
+  Variant[Enum[mask, manual], Boolean] $service_enable,
+  Enum[stopped, running]               $service_ensure,
   Boolean $service_manage,
-  Array[String]
-          $service_name,
+  Array[String]                        $service_name,
   Array[Struct[{
-    port  => Integer[0, 65535],
-    proto => Enum[tcp, udp]
-  }]]     $service_ports,
+        port  => Integer[0, 65535],
+        proto => Enum[tcp, udp]
+  }]]                                  $service_ports,
   Boolean $firewall_manage,
 
   # Main smb.conf options

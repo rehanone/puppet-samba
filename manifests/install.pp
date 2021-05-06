@@ -8,7 +8,6 @@ class samba::install () inherits samba {
 
     package { $samba::package_server:
       ensure => $samba::package_ensure,
-      alias  => 'samba',
     }
 
     package { $samba::package_client:
