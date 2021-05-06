@@ -1,6 +1,6 @@
 {
   "name": "rehan-samba",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Rehan Mahmood",
   "summary": "Install, manage and configure samba server, client and shares.",
   "license": "Apache-2.0",
@@ -53,9 +53,9 @@
     {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
-        "30",
-        "31",
-        "32"
+        "32",
+        "33",
+        "34"
       ]
     },
     {
