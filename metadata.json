@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 5.0.0 < 8.0.0"
+      "version_requirement": ">= 6.0.0 < 9.0.0"
     },
     {
       "name": "puppetlabs-augeas_core",
@@ -35,27 +35,19 @@
       ]
     },
     {
-      "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": [
-        "6",
-        "7",
-        "8"
-      ]
+      "operatingsystem": "OracleLinux"
     },
     {
-      "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "6",
-        "7",
-        "8"
-      ]
+      "operatingsystem": "Fedora"
     },
     {
-      "operatingsystem": "Fedora",
+      "operatingsystem": "AlmaLinux"
+    },
+    {
+      "operatingsystem": "SLES",
       "operatingsystemrelease": [
-        "32",
-        "33",
-        "34"
+        "12",
+        "15"
       ]
     },
     {
@@ -63,7 +55,8 @@
       "operatingsystemrelease": [
         "8",
         "9",
-        "10"
+        "10",
+        "11"
       ]
     },
     {
@@ -76,20 +69,13 @@
       ]
     },
     {
-      "operatingsystem": "SLES",
-      "operatingsystemrelease": [
-        "12",
-        "15"
-      ]
-    },
-    {
       "operatingsystem": "ArchLinux"
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 5.5.10 < 8.0.0"
+      "version_requirement": ">= 6.0.0 < 8.0.0"
     }
   ],
   "tags": [
@@ -98,7 +84,7 @@
     "smb",
     "wins"
   ],
-  "pdk-version": "2.1.0",
-  "template-url": "pdk-default#2.1.0",
-  "template-ref": "tags/2.1.0-0-ga675ea5"
+  "pdk-version": "2.3.0",
+  "template-url": "pdk-default#2.3.0",
+  "template-ref": "tags/2.3.0-0-g8aaceff"
 }
