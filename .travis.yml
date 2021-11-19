@@ -67,6 +67,15 @@ jobs:
     -
       bundler_args: --with system_tests
       dist: focal
+      env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-11 BEAKER_TESTMODE=apply
+      rvm: 2.5.7
+      script: bundle exec rake beaker
+      services: docker
+      stage: acceptance
+      sudo: required
+    -
+      bundler_args: --with system_tests
+      dist: focal
       env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_set=docker/debian-10 BEAKER_TESTMODE=apply
       rvm: 2.5.7
       script: bundle exec rake beaker
