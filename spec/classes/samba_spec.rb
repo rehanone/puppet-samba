@@ -53,6 +53,12 @@ describe 'samba' do
       end
 
       describe 'samba::config' do
+        let(:params) do
+          {
+            netbios_name: 'foo',
+          }
+        end
+
         it {
           is_expected.to contain_samba__option('workgroup').with_value('WORKGROUP')
           is_expected.to contain_samba__option('server string').with_value('%h server (Samba Server Version %v)')
