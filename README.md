@@ -1,6 +1,6 @@
 # rehan-samba
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/rehan/git.svg)](https://forge.puppetlabs.com/rehan/samba) [![Build Status](https://travis-ci.com/rehanone/puppet-samba.svg?branch=master)](https://travis-ci.com/rehanone/puppet-samba)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/rehan/samba.svg)](https://forge.puppetlabs.com/rehan/samba) [![Build Status](https://travis-ci.com/rehanone/puppet-samba.svg?branch=master)](https://travis-ci.com/rehanone/puppet-samba)
 
 #### Table of Contents
 1. [Overview](#overview)
