@@ -34,7 +34,6 @@ define samba::share (
   Optional[String]  $write_list               = undef,
   Enum[present, absent]          $ensure      = present,
 ) {
-
   $incl = $samba::incl
   $context = $samba::context
   $target = "target[. = '${name}']"
