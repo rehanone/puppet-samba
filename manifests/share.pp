@@ -9,6 +9,8 @@ define samba::share (
   Optional[String]  $copy                     = undef,
   Optional[String]  $create_mask              = undef,
   Optional[String]  $directory_mask           = undef,
+  Optional[String]  $force_create_mode        = undef,
+  Optional[String]  $force_directory_mode     = undef,
   Optional[String]  $force_group              = undef,
   Optional[String]  $force_user               = undef,
   Optional[String]  $guest_account            = undef,
@@ -65,6 +67,8 @@ define samba::share (
       "${title}-copy":                 target => $target, key => 'copy', value => $copy;
       "${title}-create mask":          target => $target, key => 'create mask', value => $create_mask;
       "${title}-directory mask":       target => $target, key => 'directory mask', value => $directory_mask;
+      "${title}-force create mode":    target => $target, key => 'force create mode', value => $force_create_mode;
+      "${title}-force directory mode": target => $target, key => 'force directory mode', value => $force_directory_mode;
       "${title}-force group":          target => $target, key => 'force group', value => $force_group;
       "${title}-force user":           target => $target, key => 'force user', value => $force_user;
       "${title}-guest account":        target => $target, key => 'guest account', value => $guest_account;
