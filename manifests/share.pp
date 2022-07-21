@@ -17,6 +17,8 @@ define samba::share (
   Optional[Boolean] $guest_ok                 = undef,
   Optional[Boolean] $guest_only               = undef,
   Optional[Boolean] $hide_unreadable          = undef,
+  Optional[Boolean] $inherit_owner            = undef,
+  Optional[Boolean] $inherit_permissions      = undef,
   Optional[Boolean] $read_only                = undef,
   Optional[Boolean] $public                   = undef,
   Optional[Boolean] $printable                = undef,
@@ -75,6 +77,8 @@ define samba::share (
       "${title}-guest ok":             target => $target, key => 'guest ok', value => $guest_ok;
       "${title}-guest only":           target => $target, key => 'guest only', value => $guest_only;
       "${title}-hide unreadable":      target => $target, key => 'hide unreadable', value => $hide_unreadable;
+      "${title}-inherit owner":        target => $target, key => 'inherit owner', value => $inherit_owner;
+      "${title}-inherit permissions":  target => $target, key => 'inherit permissions', value => $inherit_permissions;
       "${title}-read only":            target => $target, key => 'read only', value => $read_only;
       "${title}-public":               target => $target, key => 'public', value => $public;
       "${title}-printable":            target => $target, key => 'printable', value => $printable;
