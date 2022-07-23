@@ -77,6 +77,13 @@ All of this data can be provided through `Hiera`.
 
 **YAML**
 ```yaml
+samba::package_selection:
+   server:
+      ensure: "%{alias('samba::package_ensure')}"
+   client:
+      ensure: "%{alias('samba::package_ensure')}"
+   utils:
+      ensure: "%{alias('samba::package_ensure')}"
 samba::package_ensure: 'installed'
 samba::os_level: 50
 samba::workgroup: 'EXAMPLE'
@@ -96,18 +103,18 @@ samba::preferred_master: 'yes'
 samba::map_to_guest: 'Bad User'
 samba::firewall_manage: true
 samba::shares:
-   'homes':
-      comment: 'Home Directories'
-      browseable: false
-      path: '/home'
-      writable: true
-    'pictures':
-      comment: 'Pictures'
-      path: '/srv/pictures'
-      browseable: true
-      writable: true
-      create_mask: '1777'
-      directory_mask: '1777'
+  'homes':
+    comment: 'Home Directories'
+    browseable: false
+    path: '/home'
+    writable: true
+  'pictures':
+    comment: 'Pictures'
+    path: '/srv/pictures'
+    browseable: true
+    writable: true
+    create_mask: '1777'
+    directory_mask: '1777'
 ```
 
 ## Dependencies

@@ -7,21 +7,32 @@
 #  include samba
 #
 class samba (
+  Struct[{
+      server => Samba::InstallType,
+      client => Samba::InstallType,
+      utils  => Samba::InstallType,
+  }]      $package_selection,
+  Struct[{
+      server => Array[String[1]],
+      client => Array[String[1]],
+      utils  => Array[String[1]],
+  }]      $packages,
   Boolean $package_manage,
-  String  $package_ensure,
-  String  $package_server,
-  String  $package_client,
-  String  $package_utils,
+  Samba::PackageState                  $package_ensure,
   String  $config_file,
   String  $config_lens,
   Variant[Enum[mask, manual], Boolean] $service_enable,
   Enum[stopped, running]               $service_ensure,
   Boolean $service_manage,
   Array[String]                        $service_name,
-  Array[Struct[{
+  Array[
+    Struct[
+      {
         port  => Integer[0, 65535],
-        proto => Enum[tcp, udp]
-  }]]                                  $service_ports,
+        proto => Enum[tcp, udp],
+      }
+    ]
+  ]       $service_ports,
   Boolean $firewall_manage,
 
   # Main smb.conf options
