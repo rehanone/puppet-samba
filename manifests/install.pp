@@ -7,11 +7,11 @@ class samba::install () inherits samba {
   if $samba::package_manage {
 
     package { $samba::package_server:
-      ensure => $samba::package_ensure,
+      ensure => $samba::package_selection[server][ensure],
     }
 
     package { $samba::package_client:
-      ensure => $samba::package_ensure,
+      ensure => $samba::package_selection[client][ensure],
     }
 
     package { $samba::package_utils:
