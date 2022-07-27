@@ -87,10 +87,11 @@ describe 'samba' do
           is_expected.to contain_samba__option('max log size').with_value(10_000)
           is_expected.to contain_samba__option('syslog').with_value(nil)
           is_expected.to contain_samba__option('ntlm auth').with_value(false)
+          is_expected.to contain_samba__option('machine_password_timeout').with_value(nil)
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(27)
+          is_expected.to have_samba__option_resource_count(28)
         }
       end
 

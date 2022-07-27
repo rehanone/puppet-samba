@@ -51,3 +51,4 @@ samba::map_to_guest: 'Never'
 samba::socket_options: 'TCP_NODELAY'
 samba::syslog: null
 samba::ntlm_auth: false
+samba::machine_password_timeout: null
