@@ -1,4 +1,9 @@
 ---
+samba::package_selection:
+  server:
+    ensure: "%{alias('samba::package_ensure')}"
+  client:
+    ensure: "%{alias('samba::package_ensure')}"
 samba::package_manage: true
 samba::package_ensure: 'latest'
 samba::package_server: 'samba'

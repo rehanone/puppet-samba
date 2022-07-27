@@ -77,6 +77,11 @@ All of this data can be provided through `Hiera`.
 
 **YAML**
 ```yaml
+samba::package_selection:
+   server:
+      ensure: "%{alias('samba::package_ensure')}"
+   client:
+      ensure: "%{alias('samba::package_ensure')}"
 samba::package_ensure: 'installed'
 samba::os_level: 50
 samba::workgroup: 'EXAMPLE'
