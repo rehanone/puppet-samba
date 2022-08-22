@@ -39,7 +39,8 @@ class samba::config () inherits samba {
     'max log size':             value => $samba::max_log_size;
     'syslog':                   value => $samba::syslog;
     'ntlm auth':                value => $samba::ntlm_auth;
-    'machine_password_timeout': value => $samba::machine_password_timeout;
+    'machine password timeout': value => $samba::machine_password_timeout;
+    'realm':                    value => $samba::realm;
   }
 
   create_resources('samba::share', $samba::shares)
