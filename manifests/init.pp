@@ -53,6 +53,7 @@ class samba (
   Optional[String] $syslog,
   Optional[Boolean] $ntlm_auth,
   Optional[Integer] $machine_password_timeout,
+  Optional[String] $realm,
 
   Hash $shares = lookup('samba::shares', Hash, 'hash', {}),
 ) {

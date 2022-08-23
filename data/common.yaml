@@ -52,3 +52,4 @@ samba::socket_options: 'TCP_NODELAY'
 samba::syslog: null
 samba::ntlm_auth: false
 samba::machine_password_timeout: null
+samba::realm: null
