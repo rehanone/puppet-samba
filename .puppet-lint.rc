@@ -1,2 +1,2 @@
---fail-on-warnings
 --relative
+--no-documentation-check

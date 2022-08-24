@@ -1,7 +1,6 @@
 # samba::config
 #
 class samba::config () inherits samba {
-
   assert_private("Use of private class ${name} by ${caller_module_name}")
 
   augeas { 'samba-global-section':

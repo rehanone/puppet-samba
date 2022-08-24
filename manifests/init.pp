@@ -13,6 +13,7 @@ class samba (
   String  $package_client,
   String  $package_utils,
   String  $config_file,
+  String  $config_lens,
   Variant[Enum[mask, manual], Boolean] $service_enable,
   Enum[stopped, running]               $service_ensure,
   Boolean $service_manage,
@@ -55,21 +56,23 @@ class samba (
   Optional[Integer] $machine_password_timeout,
   Optional[String] $realm,
 
-  Hash $shares = lookup('samba::shares', Hash, 'hash', {}),
+  Hash $shares = {},
 ) {
-
   $incl = $config_file
   $context = "/files${incl}"
   $target = 'target[. = "global"]'
 
-  if ($package_ensure in [ 'absent', 'purged' ]) {
+  if ($package_ensure in ['absent', 'purged']) {
     class { "${module_name}::install": }
   } else {
-    anchor { "${module_name}::begin": }
-    -> class { "${module_name}::install": }
-    -> class { "${module_name}::config": }
-    ~> class { "${module_name}::service": }
-    -> class { "${module_name}::firewall": }
-    -> anchor { "${module_name}::end": }
+    contain 'samba::install'
+    contain 'samba::config'
+    contain 'samba::service'
+    contain 'samba::firewall'
+
+    Class['samba::install']
+    -> Class['samba::config']
+    ~> Class['samba::service']
+    -> Class['samba::firewall']
   }
 }
