@@ -1,3 +1,12 @@
+## 2.0.1 (August 24, 2022)
+
+**Features:**
+
+- Added machine password timeout parameter. ([#29](https://github.com/rehanone/puppet-samba/pull/29); [welchnut](https://github.com/welchnut))
+- Added inherit owner and inherit permissions share options. ([#26](https://github.com/rehanone/puppet-samba/pull/26); [casey36901](https://github.com/casey36901))
+- Updated os support matrix.
+- Updated `pdk` templates.
+
 ## 2.0.0 (November 19, 2021)
 
 **Features:**
