@@ -1,5 +1,11 @@
 ---
-samba::package_client: 'smbclient'
+samba::packages:
+ server:
+  - samba
+ client:
+  - smbclient
+ utils:
+  - 'cifs-utils'
 samba::service_name:
  - 'smbd'
  - 'nmbd'

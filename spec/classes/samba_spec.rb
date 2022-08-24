@@ -14,27 +14,43 @@ describe 'samba' do
           let(:params) do
             {
               package_ensure: 'latest',
-              package_server: 'samba_super',
               package_manage: true,
             }
           end
 
           it {
-            is_expected.to contain_package('samba_super').with_ensure('latest')
+            is_expected.to contain_package('samba').with_ensure('latest')
           }
         end
 
         describe 'should allow the package name to be overridden' do
           let(:params) do
             {
-              package_ensure: 'present',
-              package_server: 'samba',
+              package_selection: {
+                server:
+                 {
+                   ensure: 'present',
+                 },
+                client:
+                 {
+                   ensure: 'present',
+                 },
+                utils:
+                 {
+                   ensure: 'present',
+                 },
+              },
+              packages: {
+                server: ['samba-server'],
+                client: [],
+                utils: [],
+              },
               package_manage: true,
             }
           end
 
           it {
-            is_expected.to contain_package('samba').with_ensure('present')
+            is_expected.to contain_package('samba-server').with_ensure('present')
           }
         end
 
@@ -42,7 +58,6 @@ describe 'samba' do
           let(:params) do
             {
               package_manage: false,
-              package_server: 'samba',
             }
           end
 
