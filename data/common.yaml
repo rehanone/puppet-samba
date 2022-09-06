@@ -1,13 +1,6 @@
 ---
-samba::package_selection:
-  server:
-    ensure: "%{alias('samba::package_ensure')}"
-  client:
-    ensure: "%{alias('samba::package_ensure')}"
-  utils:
-    ensure: "%{alias('samba::package_ensure')}"
 samba::package_manage: true
-samba::package_ensure: 'latest'
+samba::package_ensure: 'present'
 samba::config_file: '/etc/samba/smb.conf'
 samba::config_lens: 'Samba.lns'
 samba::service_enable: true

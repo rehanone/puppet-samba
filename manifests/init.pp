@@ -8,11 +8,6 @@
 #
 class samba (
   Struct[{
-      server => Samba::InstallType,
-      client => Samba::InstallType,
-      utils  => Samba::InstallType,
-  }]      $package_selection,
-  Struct[{
       server => Array[String[1]],
       client => Array[String[1]],
       utils  => Array[String[1]],
