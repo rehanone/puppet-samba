@@ -26,20 +26,6 @@ describe 'samba' do
         describe 'should allow the package name to be overridden' do
           let(:params) do
             {
-              package_selection: {
-                server:
-                 {
-                   ensure: 'present',
-                 },
-                client:
-                 {
-                   ensure: 'present',
-                 },
-                utils:
-                 {
-                   ensure: 'present',
-                 },
-              },
               packages: {
                 server: ['samba-server'],
                 client: [],

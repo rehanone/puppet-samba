@@ -5,11 +5,7 @@ class samba::install () inherits samba {
 
   if $samba::package_manage {
     package { $samba::packages[server]:
-      ensure => $samba::package_selection[server][ensure],
-    }
-
-    package { $samba::packages[client]:
-      ensure => $samba::package_selection[client][ensure],
+      ensure => $samba::package_ensure,
     }
 
     package { $samba::packages[utils]:

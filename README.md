@@ -37,8 +37,9 @@ This module is designed to be as clean and compliant with latest puppet code gui
 
 ## Usage
 
-### Example Usage (puppet dsl)
+### Example Usage for Samba Server (puppet dsl)
 
+```puppet
     class { 'samba':
       package_ensure       => 'installed'
       os_level             => 50,
@@ -69,7 +70,13 @@ This module is designed to be as clean and compliant with latest puppet code gui
         },
       },
     }
+```
 
+### Example Usage for Samba Client (puppet dsl)
+
+```puppet
+contain samba::client
+```
 
 ### Example Usage (hiera)
 
@@ -77,13 +84,6 @@ All of this data can be provided through `Hiera`.
 
 **YAML**
 ```yaml
-samba::package_selection:
-   server:
-      ensure: "%{alias('samba::package_ensure')}"
-   client:
-      ensure: "%{alias('samba::package_ensure')}"
-   utils:
-      ensure: "%{alias('samba::package_ensure')}"
 samba::package_ensure: 'installed'
 samba::os_level: 50
 samba::workgroup: 'EXAMPLE'
