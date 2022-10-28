@@ -40,6 +40,8 @@ class samba::config () inherits samba {
     'ntlm auth':                value => $samba::ntlm_auth;
     'machine password timeout': value => $samba::machine_password_timeout;
     'realm':                    value => $samba::realm;
+    'kerberos method':          value => $samba::kerberos_method;
+    'dedicated keytab file':    value => $samba::dedicated_keytab_file;
   }
 
   create_resources('samba::share', $samba::shares)

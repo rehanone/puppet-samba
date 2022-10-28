@@ -90,10 +90,12 @@ describe 'samba' do
           is_expected.to contain_samba__option('ntlm auth').with_value(false)
           is_expected.to contain_samba__option('machine password timeout').with_value(nil)
           is_expected.to contain_samba__option('realm').with_value(nil)
+          is_expected.to contain_samba__option('kerberos method').with_value(nil)
+          is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(29)
+          is_expected.to have_samba__option_resource_count(31)
         }
       end
 

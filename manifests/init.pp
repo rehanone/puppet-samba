@@ -61,6 +61,8 @@ class samba (
   Optional[Boolean] $ntlm_auth,
   Optional[Integer] $machine_password_timeout,
   Optional[String] $realm,
+  Optional[String] $kerberos_method,
+  Optional[String] $dedicated_keytab_file,
 
   Hash $shares = {},
 ) {
