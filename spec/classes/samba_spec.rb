@@ -95,7 +95,7 @@ describe 'samba' do
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(31)
+          is_expected.to have_samba__option_resource_count(32)
         }
       end
 

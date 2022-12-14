@@ -42,6 +42,7 @@ class samba::config () inherits samba {
     'realm':                    value => $samba::realm;
     'kerberos method':          value => $samba::kerberos_method;
     'dedicated keytab file':    value => $samba::dedicated_keytab_file;
+    'obey pam restrictions':    value => $samba::obey_pam_restrictions;
   }
 
   create_resources('samba::share', $samba::shares)
