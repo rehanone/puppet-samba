@@ -44,5 +44,13 @@ class samba::config () inherits samba {
     'dedicated keytab file':    value => $samba::dedicated_keytab_file;
   }
 
+  $samba::idmap_config.each | $idmap_domain, $idmap_options | {
+    $idmap_options.each | $idmap_option, $idmap_value | {
+      samba::option { "idmap config ${idmap_domain}: ${idmap_option}":
+        value => $idmap_value,
+      }
+    }
+  }
+
   create_resources('samba::share', $samba::shares)
 }
