@@ -92,7 +92,7 @@ describe 'samba' do
           is_expected.to contain_samba__option('realm').with_value(nil)
           is_expected.to contain_samba__option('kerberos method').with_value(nil)
           is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
-          is_expected.to contain_samba__option('idmap config').with_value(nil)
+          is_expected.to contain_samba__option('idmap config').with_value({})
         }
 
         it {
