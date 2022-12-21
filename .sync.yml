@@ -26,6 +26,8 @@ appveyor.yml:
   docker_sets:
     - set: ubuntu2204-64
       collection: puppet7
+    - set: ubuntu2204-64
+      collection: puppet6
     - set: ubuntu2004-64
       collection: puppet7
     - set: ubuntu2004-64
@@ -50,11 +52,17 @@ appveyor.yml:
       collection: puppet7
     - set: debian9-64
       collection: puppet6
-    - set: debian8-64
-      collection: puppet6
-#    - set: almalinux8-64
+#    - set: almalinux9-64
 #      collection: puppet7
-#    - set: almalinux8-64
+#    - set: almalinux9-64
+#      collection: puppet6
+    - set: almalinux8-64
+      collection: puppet7
+    - set: almalinux8-64
+      collection: puppet6
+#    - set: rockylinux9-64
+#      collection: puppet7
+#    - set: rockylinux9-64
 #      collection: puppet6
 #    - set: rockylinux8-64
 #      collection: puppet7
