@@ -63,6 +63,7 @@ class samba (
   Optional[String] $realm,
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
+  Optional[Boolean] $obey_pam_restrictions,
 
   Hash $shares = {},
 ) {
