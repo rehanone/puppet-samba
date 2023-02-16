@@ -93,10 +93,11 @@ describe 'samba' do
           is_expected.to contain_samba__option('kerberos method').with_value(nil)
           is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
           is_expected.to contain_samba__option('obey pam restrictions').with_value(false)
+          is_expected.to contain_samba__option('idmap config').with_value({})
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(32)
+          is_expected.to have_samba__option_resource_count(33)
         }
       end
 
