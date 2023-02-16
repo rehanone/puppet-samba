@@ -45,13 +45,14 @@ class samba::config () inherits samba {
     'obey pam restrictions':    value => $samba::obey_pam_restrictions;
   }
 
-  $samba::idmap_config.each | $idmap_domain, $idmap_options | {
-    $idmap_options.each | $idmap_option, $idmap_value | {
-      samba::option { "idmap config ${idmap_domain}: ${idmap_option}":
-        value => $idmap_value,
-      }
-    }
-  }
+  #$samba::idmap_config.each | $idmap_domain, $idmap_options | {
+  #  $idmap_options.each | $idmap_option, $idmap_value | {
+  #    samba::option { "idmap config ${idmap_domain}: ${idmap_option}":
+  #      value => $idmap_value,
+  #    }
+  #  }
+  #}
+  create_resources('samba::idmap_config', $samba::idmap_config)
 
   create_resources('samba::share', $samba::shares)
 }
