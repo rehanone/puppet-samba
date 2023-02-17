@@ -64,7 +64,7 @@ class samba (
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
-  Optional[Hash] $idmap_config,
+  Optional[Hash] $idmap_config = {},
 
   Hash $shares = {},
 ) {
