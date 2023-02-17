@@ -101,6 +101,19 @@ describe 'samba::option' do
           )
         }
       end
+
+      context 'with a hash as a value', :compile do
+        let(:title) { 'test' }
+        let(:params) { { value: {} } }
+
+        it {
+          is_expected.to contain_augeas('samba option (test=ssl tls)').with(
+            'incl' => '/etc/samba/smb.conf',
+            'lens' => 'Samba.lns',
+            'changes' => 'set "target[. = "global"]/test" "ssl tls"',
+          )
+        }
+      end
     end
   end
 end
