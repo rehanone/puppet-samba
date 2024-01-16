@@ -44,11 +44,11 @@ class samba::config () inherits samba {
     'dedicated keytab file':    value => $samba::dedicated_keytab_file;
     'obey pam restrictions':    value => $samba::obey_pam_restrictions;
 
-    'client_signing':           value => $samba::client_signing;
-    'cups_options':             value => $samba::cups_options;
-    'idmap_config':             value => $samba::idmap_config;
-    'load_printers':            value => $samba::load_printers;
-    'printcap_name':            value => $samba::printcap_name;
+    'client signing':           value => $samba::client_signing;
+    'cups options':             value => $samba::cups_options;
+    'idmap config':             value => $samba::idmap_config;
+    'load printers':            value => $samba::load_printers;
+    'printcap name':            value => $samba::printcap_name;
   }
 
   create_resources('samba::share', $samba::shares)
