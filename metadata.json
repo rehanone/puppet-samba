@@ -61,7 +61,8 @@
       "operatingsystemrelease": [
         "9",
         "10",
-        "11"
+        "11",
+        "12"
       ]
     },
     {
@@ -80,7 +81,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 6.0.0 < 8.0.0"
+      "version_requirement": ">= 6.0.0 < 9.0.0"
     }
   ],
   "tags": [
@@ -89,7 +90,7 @@
     "smb",
     "wins"
   ],
-  "pdk-version": "2.5.0",
-  "template-url": "pdk-default#2.5.0",
-  "template-ref": "tags/2.5.0-0-g369d483"
+  "pdk-version": "3.0.0",
+  "template-url": "pdk-default#3.0.0",
+  "template-ref": "tags/3.0.0-0-g056e50d"
 }
