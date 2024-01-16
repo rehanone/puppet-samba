@@ -44,8 +44,8 @@ class samba (
   Optional[String] $server_min_protocol,
   Optional[String] $client_max_protocol,
   Optional[String] $client_min_protocol,
-  Array[String] $hosts_allow,
-  Array[String] $hosts_deny,
+  Optional Array[String] $hosts_allow,
+  Optional Array[String] $hosts_deny,
   Array[String] $interfaces,
   Optional[Boolean] $bind_interfaces_only,
   Optional[String] $log_file,
@@ -64,6 +64,12 @@ class samba (
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
+
+  Optional[String] $client_signing,
+  Optional[String] $cups_options,
+  Optional[String] $idmap_config,
+  Optional[String] $load_printers,
+  Optional[String] $printcap_name,
 
   Hash $shares = {},
 ) {
