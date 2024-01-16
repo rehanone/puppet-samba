@@ -65,11 +65,11 @@ class samba (
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
 
-  Optional[String] $client_signing = 'default',
-  Optional[String] $cups_options   = '',
-  Optional[String] $idmap_config   = '* : backend = tdb',
-  Optional[String] $load_printers  = true,
-  Optional[String] $printcap_name  = ' /etc/printcap',
+  String $client_signing = 'default',
+  String $cups_options   = '',
+  String $idmap_config   = '* : backend = tdb',
+  Boolean $load_printers  = true,
+  String $printcap_name  = ' /etc/printcap',
 
   Hash $shares = {},
 ) {
