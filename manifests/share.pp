@@ -55,7 +55,9 @@ define samba::share (
     if $comment == undef {
       fail('parameter "comment" must be set')
     }
-    if $path == undef {
+
+    # Only for a [homes] section is it acceptable NOT to have $path defined.
+    if $path == undef and $target != 'homes' {
       fail('parameter "path" must be set')
     }
 
