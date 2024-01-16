@@ -58,9 +58,9 @@ define samba::share (
 
     # Only for a [homes] section is it acceptable NOT to have $path defined.
     notify {"path = ${path} and target = ${target}...................................":}
-    if $path == undef and $target != 'homes' {
-      fail('parameter "path" must be set')
-    }
+#    if $path == undef and $target != 'homes' {
+#      fail('parameter "path" must be set')
+#    }
 
     samba::option {
       "${title}-comment":              target => $target, key => 'comment',  value => $comment;
