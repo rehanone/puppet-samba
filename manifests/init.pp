@@ -44,8 +44,8 @@ class samba (
   Optional[String] $server_min_protocol,
   Optional[String] $client_max_protocol,
   Optional[String] $client_min_protocol,
-  Optional[Array[String]] $hosts_allow = 'ALL',
-  Optional[Array[String]] $hosts_deny = 'NONE',
+  Optional[Array[String]] $hosts_allow = '# none',
+  Optional[Array[String]] $hosts_deny = '# none',
   Array[String] $interfaces,
   Optional[Boolean] $bind_interfaces_only,
   Optional[String] $log_file,
@@ -65,11 +65,11 @@ class samba (
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
 
-  Optional[String] $client_signing,
-  Optional[String] $cups_options,
-  Optional[String] $idmap_config,
-  Optional[String] $load_printers,
-  Optional[String] $printcap_name,
+  Optional[String] $client_signing = 'default',
+  Optional[String] $cups_options   = '',
+  Optional[String] $idmap_config   = '* : backend = tdb',
+  Optional[String] $load_printers  = true,
+  Optional[String] $printcap_name  = ' /etc/printcap',
 
   Hash $shares = {},
 ) {
