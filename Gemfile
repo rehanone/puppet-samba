@@ -21,9 +21,9 @@ group :development do
   gem "json", '= 2.1.0',                                           require: false if Gem::Requirement.create(['>= 2.5.0', '< 2.7.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "json", '= 2.3.0',                                           require: false if Gem::Requirement.create(['>= 2.7.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "puppet-module-posix-default-r#{minor_version}", '~> 1.0',   require: false if Gem::Requirement.create(['>= 2.7.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',       require: false, platforms: [:ruby]
-  gem "puppet-module-win-default-r#{minor_version}", '~> 1.0',     require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "puppet-module-win-dev-r#{minor_version}", '~> 1.0',         require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',       require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "puppet-module-win-default-r#{minor_version}", '~> 1.0',     require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "puppet-module-win-dev-r#{minor_version}", '~> 1.0',         require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "voxpupuli-puppet-lint-plugins", '>= 3.0',                   require: false
   gem "puppet-lint-absolute_template_path",                        require: false
   gem "puppet-lint-absolute_classname-check",                      require: false
