@@ -1,5 +1,11 @@
 # samba::client
 #
+# @param packages
+# TODO
+# @param packages_manage
+# TODO
+# @param packages_ensure
+# TODO
 class samba::client (
   Struct[{
       server => Array[String[1]],
