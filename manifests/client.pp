@@ -2,9 +2,9 @@
 #
 # @param packages
 # TODO
-# @param packages_manage
+# @param package_manage
 # TODO
-# @param packages_ensure
+# @param package_ensure
 # TODO
 class samba::client (
   Struct[{
