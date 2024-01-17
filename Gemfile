@@ -44,7 +44,7 @@ group :development do
   gem "puppet-lint-legacy_facts-check",                            require: false
 end
 group :system_tests do
-  gem "puppet-module-posix-system-r#{minor_version}", '~> 1.0', require: false, platforms: [:ruby]
+  gem "puppet-module-posix-system-r#{minor_version}", '~> 1.0', require: false if Gem::Requirement.create(['>= 2.7.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "puppet-module-win-system-r#{minor_version}", '~> 1.0',   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "beaker", '~> 4.0',                                       require: false
   gem "beaker-hostgenerator",                                   require: false
