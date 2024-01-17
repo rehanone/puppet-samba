@@ -57,6 +57,8 @@ group :test do
   # Rubocop versions are also specific so it's recommended
   # to be precise. Can be turned off via a parameter
   gem 'rubocop', require: false
+  # metagem that pulls in all further requirements
+  gem 'voxpupuli-test', '~> 7.0', require: false
 end
 
 group :system_tests do
@@ -69,6 +71,7 @@ group :system_tests do
   gem "beaker-module_install_helper",                           require: false
   gem "beaker-rspec",                                           require: false
   gem "beaker-docker",                                          require: false
+  gem 'voxpupuli-acceptance', '~> 2.1', require: false
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
