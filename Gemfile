@@ -17,31 +17,6 @@ ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
 minor_version = ruby_version_segments[0..1].join('.')
 
 group :development do
-  gem "json", '= 2.0.4',                                           require: false if Gem::Requirement.create('~> 2.4.2').satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "json", '= 2.1.0',                                           require: false if Gem::Requirement.create(['>= 2.5.0', '< 2.7.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "json", '= 2.3.0',                                           require: false if Gem::Requirement.create(['>= 2.7.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "puppet-module-posix-default-r#{minor_version}", '~> 1.0',   require: false if Gem::Requirement.create(['>= 2.7.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',       require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "puppet-module-win-default-r#{minor_version}", '~> 1.0',     require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "puppet-module-win-dev-r#{minor_version}", '~> 1.0',         require: false if Gem::Requirement.create(['>= 2.1.0', '< 2.8.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "voxpupuli-puppet-lint-plugins", '>= 3.0',                   require: false
-  gem "puppet-lint-absolute_template_path",                        require: false
-  gem "puppet-lint-absolute_classname-check",                      require: false
-  gem "puppet-lint-alias-check",                                   require: false
-  gem "puppet-lint-classes_and_types_beginning_with_digits-check", require: false
-  gem "puppet-lint-concatenated_template_files-check",             require: false
-  gem "puppet-lint-file_ensure-check",                             require: false
-  gem "puppet-lint-file_source_rights-check",                      require: false
-  gem "puppet-lint-leading_zero-check",                            require: false
-  gem "puppet-lint-resource_reference_syntax",                     require: false
-  gem "puppet-lint-strict_indent-check",                           require: false
-  #gem "puppet-lint-top_scope_facts-check",                         require: false
-  #gem "puppet-lint-topscope-variable-check",                       require: false
-  gem "puppet-lint-trailing_comma-check",                          require: false
-  gem "puppet-lint-unquoted_string-check",                         require: false
-  gem "puppet-lint-variable_contains_upcase",                      require: false
-  gem "puppet-lint-version_comparison-check",                      require: false
-  gem "puppet-lint-legacy_facts-check",                            require: false
 end
 
 # The test group is used for static validations and unit tests in gha-puppet's
