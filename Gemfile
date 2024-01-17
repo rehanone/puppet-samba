@@ -35,6 +35,7 @@ group :test do
   # Rubocop versions are also specific so it's recommended
   # to be precise. Can be turned off via a parameter
   gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
 
   # metagem that pulls in all further requirements
   gem 'voxpupuli-test', '~> 7.0', require: false
