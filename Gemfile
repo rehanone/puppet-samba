@@ -36,7 +36,7 @@ group :development do
   gem "puppet-lint-resource_reference_syntax",                     require: false
   gem "puppet-lint-strict_indent-check",                           require: false
   gem "puppet-lint-top_scope_facts-check",                         require: false
-  gem "puppet-lint-topscope-variable-check",                       require: false
+  #gem "puppet-lint-topscope-variable-check",                       require: false
   gem "puppet-lint-trailing_comma-check",                          require: false
   gem "puppet-lint-unquoted_string-check",                         require: false
   gem "puppet-lint-variable_contains_upcase",                      require: false
