@@ -1,5 +1,71 @@
 # == Define samba::share
 #
+#
+#
+# @param comment
+# TODO
+# @param path
+# TODO
+# @param writable
+# TODO
+# @param available
+# TODO
+# @param browseable
+# TODO
+# @param copy
+# TODO
+# @param create_mask
+# TODO
+# @param directory_mask
+# TODO
+# @param force_create_mode
+# TODO
+# @param force_directory_mode
+# TODO
+# @param force_group
+# TODO
+# @param force_user
+# TODO
+# @param guest_account
+# TODO
+# @param guest_ok
+# TODO
+# @param guest_only
+# TODO
+# @param hide_unreadable
+# TODO
+# @param inherit_owner
+# TODO
+# @param inherit_permissions
+# TODO
+# @param read_only
+# TODO
+# @param public
+# TODO
+# @param printable
+# TODO
+# @param valid_users
+# TODO
+# @param follow_symlinks
+# TODO
+# @param wide_links
+# TODO
+# @param map_acl_inherit
+# TODO
+# @param store_dos_attributes
+# TODO
+# @param strict_allocate
+# TODO
+# @param oplocks
+# TODO
+# @param level2_oplocks
+# TODO
+# @param veto_oplock_files
+# TODO
+# @param write_list
+# TODO
+# @param ensure
+# TODO
 define samba::share (
   Optional[String]  $comment                  = undef,
   Optional[Stdlib::Absolutepath] $path        = undef,
