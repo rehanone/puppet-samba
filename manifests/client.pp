@@ -2,9 +2,9 @@
 #
 class samba::client (
   Struct[{
-  server => Array[String[1]],
-  client => Array[String[1]],
-  utils  => Array[String[1]],
+      server => Array[String[1]],
+      client => Array[String[1]],
+      utils  => Array[String[1]],
   }]                  $packages       = $samba::packages,
   Boolean             $package_manage = $samba::package_manage,
   Samba::PackageState $package_ensure = $samba::package_ensure,
