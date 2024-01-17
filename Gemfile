@@ -69,17 +69,6 @@ group :system_tests do
   gem "beaker-module_install_helper",                           require: false
   gem "beaker-rspec",                                           require: false
   gem "beaker-docker",                                          require: false
-
-
-  # Needed to build the test matrix based on metadata
-  gem 'puppet_metadata', '~> 3.4', require: false
-  # Needed for the rake tasks
-  gem 'puppetlabs_spec_helper', '>= 2.16.0', '< 7', require: false
-  # Rubocop versions are also specific so it's recommended
-  # to be precise. Can be turned off via a parameter
-  gem 'rubocop', require: false
-
-
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
