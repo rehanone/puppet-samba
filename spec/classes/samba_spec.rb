@@ -87,7 +87,7 @@ describe 'samba' do
           is_expected.to contain_samba__option('log file').with_value('/var/log/samba/log.%m')
           is_expected.to contain_samba__option('max log size').with_value(10_000)
           is_expected.to contain_samba__option('syslog').with_value(nil)
-          is_expected.to contain_samba__option('ntlm auth').with_value(false)
+          is_expected.to contain_samba__option('ntlm auth').with_value('ntlmv2-only')
           is_expected.to contain_samba__option('machine password timeout').with_value(nil)
           is_expected.to contain_samba__option('realm').with_value(nil)
           is_expected.to contain_samba__option('kerberos method').with_value(nil)
@@ -96,7 +96,7 @@ describe 'samba' do
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(32)
+          is_expected.to have_samba__option_resource_count(37)
         }
       end
 

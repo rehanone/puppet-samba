@@ -167,7 +167,7 @@ class samba (
   Optional[Boolean] $obey_pam_restrictions,
 
   String $client_signing = 'default',
-  String $cups_options   = undef,
+  String $cups_options   = 'hello',
   String $idmap_config   = '* : backend = tdb',
   Boolean $load_printers  = true,
   String $printcap_name  = ' /etc/printcap',
