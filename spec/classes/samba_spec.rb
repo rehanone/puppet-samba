@@ -60,7 +60,7 @@ describe 'samba' do
             cups_options: 'raw media=a4',
             idmap_config: '* : backend = tdb',
             load_printers: true,
-	    printcap_name: '/etc/printcap',
+            printcap_name: '/etc/printcap',
           }
         end
 
