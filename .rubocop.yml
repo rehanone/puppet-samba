@@ -7,7 +7,7 @@ require:
 - rubocop-rspec
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: '2.5'
+  TargetRubyVersion: '2.7'
   Include:
   - "**/*.rb"
   Exclude:
@@ -290,11 +290,11 @@ Performance/UriDefaultParser:
   Enabled: false
 RSpec/Be:
   Enabled: false
-RSpec/Capybara/CurrentPathExpectation:
+Capybara/CurrentPathExpectation:
   Enabled: false
 RSpec/Capybara/FeatureMethods:
   Enabled: false
-RSpec/Capybara/VisibilityMatcher:
+Capybara/VisibilityMatcher:
   Enabled: false
 RSpec/ContextMethod:
   Enabled: false
