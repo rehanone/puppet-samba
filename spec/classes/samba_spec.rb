@@ -57,6 +57,10 @@ describe 'samba' do
         let(:params) do
           {
             netbios_name: 'foo',
+            cups_options: 'raw media=a4',
+            idmap_config: '* : backend = tdb',
+            load_printers: true,
+	    printcap_name: '/etc/printcap',
           }
         end
 
@@ -93,6 +97,11 @@ describe 'samba' do
           is_expected.to contain_samba__option('kerberos method').with_value(nil)
           is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
           is_expected.to contain_samba__option('obey pam restrictions').with_value(false)
+          is_expected.to contain_samba__option('client signing').with_value('default')
+          is_expected.to contain_samba__option('cups options').with_value('raw media=a4')
+          is_expected.to contain_samba__option('idmap config').with_value('* : backend = tdb')
+          is_expected.to contain_samba__option('load printers').with_value(true)
+          is_expected.to contain_samba__option('printcap name').with_value('/etc/printcap')
         }
 
         it {
