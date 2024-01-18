@@ -165,7 +165,6 @@ class samba (
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
-
   String $client_signing = 'default',
   Variant[String, Undef]  $cups_options   = undef,
   String $idmap_config   = '* : backend = tdb',
