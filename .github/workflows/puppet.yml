@@ -10,3 +10,4 @@ jobs:
   puppet:
     name: Puppet
     uses: bschonec/gha-puppet/.github/workflows/basic.yml@ruby
+    
