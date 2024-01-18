@@ -9,5 +9,4 @@ concurrency:
 jobs:
   puppet:
     name: Puppet
-    uses: bschonec/gha-puppet/.github/workflows/basic.yml@ruby
-    
+    uses: voxpupuli/gha-puppet/.github/workflows/basic.yml@v1
