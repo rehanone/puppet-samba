@@ -1,5 +1,16 @@
 # == Define samba::option
 #
+# @param key
+# TODO
+# @param value
+# TODO
+# @param config_file
+# TODO
+# @param lens
+# TODO
+# @param target
+# TODO
+
 define samba::option (
   String $key         = $title,
   Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,

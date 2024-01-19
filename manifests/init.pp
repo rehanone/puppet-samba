@@ -6,6 +6,97 @@
 # Sample Usage :
 #  include samba
 #
+# @param packages
+# TODO
+# @param package_manage
+# TODO
+# @param package_ensure
+# TODO
+# @param config_file
+# TODO
+# @param config_lens
+# TODO
+# @param service_enable
+# TODO
+# @param service_ensure
+# TODO
+# @param service_manage
+# TODO
+# @param service_name
+# TODO
+# @param service_ports
+# TODO
+# @param firewall_manage
+# TODO
+# @param workgroup
+# TODO
+# @param server_string
+# TODO
+# @param netbios_name
+# TODO
+# @param domain_master
+# TODO
+# @param preferred_master
+# TODO
+# @param local_master
+# TODO
+# @param os_level
+# TODO
+# @param wins_support
+# TODO
+# @param wins_server
+# TODO
+# @param name_resolve_order
+# TODO
+# @param server_min_protocol
+# TODO
+# @param client_max_protocol
+# TODO
+# @param client_min_protocol
+# TODO
+# @param hosts_allow
+# TODO
+# @param hosts_deny
+# TODO
+# @param interfaces
+# TODO
+# @param bind_interfaces_only
+# TODO
+# @param log_file
+# TODO
+# @param max_log_size
+# TODO
+# @param passdb_backend
+# TODO
+# @param domain_logons
+# TODO
+# @param map_to_guest
+# TODO
+# @param security
+# TODO
+# @param encrypt_passwords
+# TODO
+# @param unix_password_sync
+# TODO
+# @param socket_options
+# TODO
+# @param syslog
+# TODO
+# @param ntlm_auth
+# TODO
+# @param machine_password_timeout
+# TODO
+# @param realm
+# TODO
+# @param kerberos_method
+# TODO
+# @param dedicated_keytab_file
+# TODO
+# @param obey_pam_restrictions
+# TODO
+# @param shares
+# TODO
+
 class samba (
   Struct[{
       server => Array[String[1]],

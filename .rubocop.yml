@@ -1,4 +1,7 @@
 ---
+inherit_gem:
+  voxpupuli-test: rubocop.yml
+
 require:
 - rubocop-performance
 - rubocop-rspec
@@ -287,11 +290,11 @@ Performance/UriDefaultParser:
   Enabled: false
 RSpec/Be:
   Enabled: false
-RSpec/Capybara/CurrentPathExpectation:
+Capybara/CurrentPathExpectation:
   Enabled: false
 RSpec/Capybara/FeatureMethods:
   Enabled: false
-RSpec/Capybara/VisibilityMatcher:
+Capybara/VisibilityMatcher:
   Enabled: false
 RSpec/ContextMethod:
   Enabled: false
