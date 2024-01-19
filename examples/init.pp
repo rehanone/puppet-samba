@@ -6,7 +6,7 @@ node default {
   user { 'root': }
 
   class { 'samba':
-    require           => Notify['enduser-before'],
-    before            => Notify['enduser-after'],
+    require => Notify['enduser-before'],
+    before  => Notify['enduser-after'],
   }
 }

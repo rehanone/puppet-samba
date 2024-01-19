@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'voxpupuli/test/rake'
 require 'bundler'
 require 'puppet_litmus/rake_tasks' if Bundler.rubygems.find_name('puppet_litmus').any?
 require 'puppetlabs_spec_helper/rake_tasks'
@@ -41,9 +42,8 @@ def changelog_future_release
   returnVal
 end
 
-PuppetLint.configuration.send('disable_relative')
-PuppetLint.configuration.send('disable_documentation')
-
+# PuppetLint.configuration.send('disable_relative')
+# PuppetLint.configuration.send('disable_documentation')
 
 if Bundler.rubygems.find_name('github_changelog_generator').any?
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
