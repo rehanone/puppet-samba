@@ -151,7 +151,7 @@ class samba (
   Optional[Boolean] $unix_password_sync,
   Optional[String] $socket_options,
   Optional[String] $syslog,
-  Optional[Boolean] $ntlm_auth,
+  Variant[Enum['ntlmv1-permitted', 'ntlmv2-only', 'mschapv2-and-ntlmv2-only', 'disabled'], Boolean] $ntlm_auth,
   Optional[Integer] $machine_password_timeout,
   Optional[String] $realm,
   Optional[String] $kerberos_method,
