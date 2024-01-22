@@ -96,6 +96,8 @@
 # TODO
 # @param shares
 # TODO
+# @param idmap_config
+#    The mapping between Windows SIDs and Unix user and group IDs.
 
 class samba (
   Struct[{
@@ -155,6 +157,7 @@ class samba (
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
+  Optional[Hash] $idmap_config,
 
   Hash $shares = {},
 ) {

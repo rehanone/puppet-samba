@@ -53,3 +53,4 @@ samba::realm: null
 samba::kerberos_method: null
 samba::dedicated_keytab_file: null
 samba::obey_pam_restrictions: false
+samba::idmap_config: {}
