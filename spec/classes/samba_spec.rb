@@ -57,6 +57,8 @@ describe 'samba' do
         let(:params) do
           {
             netbios_name: 'foo',
+            idmap_config: { '*' => { backend: 'tbd', range: '400-999' },
+                           'AD' => { unix_primary_group: 'Yes', unix_nss_info: 'Yes', schema_mode: 'rfc2307', range: '1000-2147483647', backend: 'ad' } }
           }
         end
 
@@ -93,10 +95,17 @@ describe 'samba' do
           is_expected.to contain_samba__option('kerberos method').with_value(nil)
           is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
           is_expected.to contain_samba__option('obey pam restrictions').with_value(false)
+          is_expected.to contain_samba__option('idmap config * : backend').with_value('tbd')
+          is_expected.to contain_samba__option('idmap config * : range').with_value('400-999')
+          is_expected.to contain_samba__option('idmap config AD : unix_primary_group').with_value('Yes')
+          is_expected.to contain_samba__option('idmap config AD : unix_nss_info').with_value('Yes')
+          is_expected.to contain_samba__option('idmap config AD : schema_mode').with_value('rfc2307')
+          is_expected.to contain_samba__option('idmap config AD : range').with_value('1000-2147483647')
+          is_expected.to contain_samba__option('idmap config AD : backend').with_value('ad')
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(32)
+          is_expected.to have_samba__option_resource_count(39)
         }
       end
 

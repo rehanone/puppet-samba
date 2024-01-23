@@ -115,6 +115,16 @@ samba::shares:
     writable: true
     create_mask: '1777'
     directory_mask: '1777'
+samba::idmap_config:
+  '*':
+    backend: 'tdb'
+    range: '400-999'
+  'AD':
+    unix_primary_group: 'Yes'
+    unix_nss_info: 'Yes'
+    schema_mode: 'rfc2307'
+    range: '1000-2147483647'
+    backend: 'ad'
 ```
 
 ## Dependencies

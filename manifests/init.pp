@@ -96,6 +96,8 @@
 # TODO
 # @param shares
 # TODO
+# @param idmap_config
+#    The mapping between Windows SIDs and Unix user and group IDs.
 
 class samba (
   Struct[{
@@ -149,12 +151,13 @@ class samba (
   Optional[Boolean] $unix_password_sync,
   Optional[String] $socket_options,
   Optional[String] $syslog,
-  Optional[Boolean] $ntlm_auth,
+  Variant[Enum['ntlmv1-permitted', 'ntlmv2-only', 'mschapv2-and-ntlmv2-only', 'disabled'], Boolean] $ntlm_auth,
   Optional[Integer] $machine_password_timeout,
   Optional[String] $realm,
   Optional[String] $kerberos_method,
   Optional[String] $dedicated_keytab_file,
   Optional[Boolean] $obey_pam_restrictions,
+  Optional[Hash] $idmap_config,
 
   Hash $shares = {},
 ) {
