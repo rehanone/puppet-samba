@@ -1,4 +1,4 @@
-# samba::firewall
+# @summary: Manage the firewall
 #
 class samba::firewall () inherits samba {
   assert_private("Use of private class ${name} by ${caller_module_name}")

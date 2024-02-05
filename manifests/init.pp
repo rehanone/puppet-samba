@@ -1,104 +1,150 @@
-# Class: samba
+# @summary
+#   This module manages Samba/CIFS, the virtual filesystem based on SMB protocol.
 #
-# For all main options, see the smb.conf(5) and samba(7) man pages.
+# For all main options, see the smb.conf(5) and samba(7) man pages.  Default values for all
+# parameters can be found at https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html.
 # For the SELinux related options, see smbd_selinux(8).
 #
 # Sample Usage :
 #  include samba
 #
 # @param packages
-# TODO
+#    Names of the server, client and utility pacakges to be installed when managing Samba.
+#
 # @param package_manage
-# TODO
+#    Should this module manage the installation/removal of the $packages?
+#
 # @param package_ensure
-# TODO
+#    The installation state of $packages.
+#
 # @param config_file
-# TODO
+#    The Augeas lens to use for managing the smb.conf file.
+#
 # @param config_lens
-# TODO
+#    The Augeas lens to use for managing the smb.conf file.
+#
 # @param service_enable
-# TODO
+#    Enable/disable the Samba service on reboot.
+#
 # @param service_ensure
-# TODO
+#   The value of ``ensure`` for package resources.
+#
 # @param service_manage
-# TODO
+#   Should the Samba service be managd by this module?
+#
 # @param service_name
-# TODO
+#   The name of the Samba service.
+#
 # @param service_ports
-# TODO
+#    The service ports to be added to the firewall (if managed).
+#
 # @param firewall_manage
-# TODO
+#    Manage the firewall rules for the Samba services.
+#
 # @param workgroup
-# TODO
+#    This controls what workgroup your server will appear to be in when queried by clients.
+#
 # @param server_string
-# TODO
+#    This controls what string will show up in the printer comment box in print manager and next to the IPC connection in net view.
+#
 # @param netbios_name
-# TODO
+#    This sets the NetBIOS name by which a Samba server is known.
+#
 # @param domain_master
-# TODO
+#    Tell smbd(8) to enable WAN-wide browse list collation.
+#
 # @param preferred_master
-# TODO
+#    This boolean parameter controls if nmbd(8) is a preferred master browser for its workgroup.
+#
 # @param local_master
-# TODO
+#    This option allows nmbd(8) to try and become a local master browser on a subnet.
+#
 # @param os_level
-# TODO
+#    This integer value controls what level Samba advertises itself as for browse elections.
+#
 # @param wins_support
-# TODO
+#    This boolean controls if the nmbd(8) process in Samba will act as a WINS server. 
+#
 # @param wins_server
-# TODO
+#    This specifies the IP address (or DNS name: IP address for preference) of the WINS server that nmbd(8) should register with.
+#
 # @param name_resolve_order
-# TODO
+#    This option is used by the programs in the Samba suite to determine what naming services to use and in what order to resolve host names to IP addresses.
+#
 # @param server_min_protocol
-# TODO
+#    This setting controls the minimum protocol version that the server will allow the client to use.
+#
 # @param client_max_protocol
-# TODO
+#    The value of the parameter (a string) is the highest protocol level that will be supported for IPC$ connections as DCERPC transport.
+#
 # @param client_min_protocol
-# TODO
+#    This setting controls the minimum protocol version that the client will attempt to use.
+#
 # @param hosts_allow
-# TODO
+#    This parameter is a comma, space, or tab delimited set of hosts which are permitted to access a service.
+#
 # @param hosts_deny
-# TODO
+#    The opposite of hosts allow - hosts listed here are NOT permitted access to services unless the specific services have their own lists to override this one.
+#
 # @param interfaces
-# TODO
+#    default: interfaces =
+#
 # @param bind_interfaces_only
-# TODO
+#    This global parameter allows the Samba admin to limit what interfaces on a machine will serve SMB requests.
+#
 # @param log_file
-# TODO
+#    This option allows you to override the name of the Samba log file (also known as the debug file).
+#
 # @param max_log_size
-# TODO
+#    This option (an integer in kilobytes) specifies the max size the log file should grow to.
+#
 # @param passdb_backend
-# TODO
+#    This option allows the administrator to chose which backend will be used for storing user and possibly group information.
+#
 # @param domain_logons
-# TODO
+#    DEPRECATED:  This parameter has been deprecated since Samba 4.13 and support for NT4-style domain logons(as distinct from the Samba AD DC) will be removed in a future Samba release.
+#
 # @param map_to_guest
-# TODO
+#    This parameter can take four different values, which tell smbd(8) what to do with user login requests that don't match a valid UNIX user in some way.
+#
 # @param security
-# TODO
+#    This option affects how clients respond to Samba.
+#
 # @param encrypt_passwords
-# TODO
+#    DEPRECATED: This boolean controls whether encrypted passwords will be negotiated with the client
+#
 # @param unix_password_sync
-# TODO
+#    This boolean parameter controls whether Samba attempts to synchronize the UNIX password with the SMB password when the encrypted SMB password in the smbpasswd file is changed.
+#
 # @param socket_options
-# TODO
+#   This option allows you to set socket options to be used when talking with the client.
+#
 # @param syslog
-# TODO
+#    This parameter maps how Samba debug messages are logged onto the system syslog logging levels.
+#
 # @param ntlm_auth
-# TODO
+#    This parameter determines whether or not smbd(8) will attempt to authenticate users using the NTLM encrypted password response for this local passdb (SAM or account database).
+#
 # @param machine_password_timeout
-# TODO
+#    This parameter specifies how often the MACHINE ACCOUNT password will be changed, in seconds.
+#
 # @param realm
-# TODO
+#    This option specifies the kerberos realm to use.
+#
 # @param kerberos_method
-# TODO
+#    Controls how kerberos tickets are verified.
+#
 # @param dedicated_keytab_file
-# TODO
+#    Specifies the absolute path to the kerberos keytab file when kerberos method is set to "dedicated keytab".
+#
 # @param obey_pam_restrictions
-# TODO
+#    This parameter will control whether or not Samba should obey PAM's account and session management directives.
 # @param shares
-# TODO
+#    A hash of share names, their path(s) and other parameters.
+#
 # @param idmap_config
 #    The mapping between Windows SIDs and Unix user and group IDs.
-
+#
 class samba (
   Struct[{
       server => Array[String[1]],

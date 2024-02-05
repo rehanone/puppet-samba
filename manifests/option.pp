@@ -1,16 +1,21 @@
-# == Define samba::option
+# @summary
+#   Manages smb.conf options.
 #
 # @param key
-# TODO
+#    This is the Samba configuration parameter to be set.
+#
 # @param value
-# TODO
+#    The value of $key in the smb.conf file.
+#
 # @param config_file
-# TODO
+#    The path to the Samba configuration file. eg: /etc/samba/smb.conf.
+#
 # @param lens
-# TODO
+#    The Augeas lens used to manage the entries in the $config_file.
+#
 # @param target
-# TODO
-
+#    The Augeas target for the key/value pair settings.
+#
 define samba::option (
   String $key         = $title,
   Variant[Boolean, Integer, String, Array[String], Undef] $value = undef,

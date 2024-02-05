@@ -1,11 +1,15 @@
+# @summary: This module installs the SAMBA/CIFS client.
 # samba::client
 #
 # @param packages
-# TODO
+#    The name of the Samba client package.
+#
 # @param package_manage
-# TODO
+#    Should the Samba client package be managed by this module?
+#
 # @param package_ensure
-# TODO
+#    The installation state of the Samba client package
+#
 class samba::client (
   Struct[{
       server => Array[String[1]],

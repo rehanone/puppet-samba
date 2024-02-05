@@ -3,69 +3,101 @@
 #
 #
 # @param comment
-# TODO
+#    This is a text field that is seen next to a share when a client does a queries the server, either via the network neighborhood or via net view to list what shares are available.
+#
 # @param path
-# TODO
+#    This parameter specifies a directory to which the user of the service is to be given access.
+#
 # @param writable
-# TODO
+#    If this parameter is true (ie: yes) then users of a service may create or modify files in the service's directory.
+#
 # @param available
-# TODO
+#    This parameter lets you "turn off" a service. If available = false (ie, no), then ALL attempts to connect to the service will fail.
+#
 # @param browseable
-# TODO
+#    This controls whether this share is seen in the list of available shares in a net view and in the browse list.
+#
 # @param copy
-# TODO
+#    This parameter allows you to "clone" service entries. The specified service is simply duplicated under the current service's name.
+#
 # @param create_mask
-# TODO
+#    This parameter is a bit-wise MASK for the UNIX modes of a file.
+#
 # @param directory_mask
-# TODO
+#    This parameter is the octal modes which are used when converting DOS modes to UNIX modes when creating UNIX directories.
+#
 # @param force_create_mode
-# TODO
+#    This parameter specifies a set of UNIX mode bit permissions that will always be set on a file created by Samba.
+#
 # @param force_directory_mode
-# TODO
+#    This parameter specifies a set of UNIX mode bit permissions that will always be set on a directory created by Samba.
+#
 # @param force_group
-# TODO
+#    This specifies a UNIX group name that will be assigned as the default primary group for all users connecting to this service.
+#
 # @param force_user
-# TODO
+#    This specifies a UNIX user name that will be assigned as the default user for all users connecting to this service.
+#
 # @param guest_account
-# TODO
+#    This is a username which will be used for access to services which are specified as $guest_ok (see below).
+#
 # @param guest_ok
-# TODO
+#    If this parameter is true (ie: yes) for a service, then no password is required to connect to the service.
+#
 # @param guest_only
-# TODO
+#    If this parameter is true (ie: yes) for a service, then only guest connections to the service are permitted
+#
 # @param hide_unreadable
-# TODO
+#    This parameter prevents clients from seeing the existence of files that cannot be read.
+#
 # @param inherit_owner
-# TODO
+#    The ownership of new files and directories is normally governed by effective uid of the connected user.
+#
 # @param inherit_permissions
-# TODO
+#    The permissions on new files and directories are normally governed by create mask, directory mask, force create mode and force directory mode
+#
 # @param read_only
-# TODO
+#    If this parameter is true (ie: yes) then users of a service may not create or modify files in the service's directory.
+#
 # @param public
-# TODO
+#    If this parameter is true (ie: yes) for a service, then no password is required to connect to the service.
+#
 # @param printable
-# TODO
+#    If this parameter is true (ie: yes) then clients may open, write to and submit spool files on the directory specified for the service.
+#
 # @param valid_users
-# TODO
+#    This is a list of users that should be allowed to login to this service.
+#
 # @param follow_symlinks
-# TODO
+#    This parameter allows the Samba administrator to stop smbd(8) from following symbolic links in a particular share.
+#
 # @param wide_links
-# TODO
+#    This parameter controls whether or not links in the UNIX file system may be followed by the server
+#
 # @param map_acl_inherit
-# TODO
+#    this parameter controls whether smbd(8) will attempt to map the 'protected' (don't inherit) flags of the Windows ACLs into an extended attribute called user.SAMBA_PAI (POSIX draft ACL Inheritance).
+#
 # @param store_dos_attributes
-# TODO
+#    When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory.
+#
 # @param strict_allocate
-# TODO
+#    When this is set to yes the server will change from UNIX behaviour of not committing real disk storage blocks when a file is extended to the Windows behaviour of actually forcing the disk system to allocate real storage blocks when a file is created or extended to be a given size. In UNIX terminology this means that Samba will stop creating sparse files.
+#
 # @param oplocks
-# TODO
+#    This boolean option tells smbd whether to issue oplocks (opportunistic locks) to file open requests on this share.
+#
 # @param level2_oplocks
-# TODO
+#    This parameter controls whether Samba supports level2 (read-only) oplocks on a share.
+#
 # @param veto_oplock_files
-# TODO
+#    This parameter allows the Samba administrator to selectively turn off the granting of oplocks on selected files that match a wildcarded list, similar to the wildcarded list used in the veto files parameter.
+#
 # @param write_list
-# TODO
+#    This is a list of users that are given read-write access to a service.
+#
 # @param ensure
-# TODO
+#    The absent/present state of the key/value parameter.
+#
 define samba::share (
   Optional[String]  $comment                  = undef,
   Optional[Stdlib::Absolutepath] $path        = undef,
