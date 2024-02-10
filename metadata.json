@@ -1,6 +1,6 @@
 {
   "name": "rehan-samba",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "Rehan Mahmood",
   "summary": "Install, manage and configure samba server, client and shares.",
   "license": "Apache-2.0",
