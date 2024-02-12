@@ -3,14 +3,14 @@
 **Features:**
 
 This is a major release after a long while. The main reason for not being able to create a new release was two folds.
-Firstly, the `pdk` in the latest releases has become almost unworkable (maybe it is my lack of understanding, but I do 
-not have the time commitment required to keep up with what is going on in there!). The second is the tests for this module 
-that were largely dependent on [TravisCI](https://app.travis-ci.com/github/rehanone/puppet-samba?serverType=git) which has 
-not been very kind to free and open source project of late. Without the ability to run any kind of tests, it was impossible 
+Firstly, the `pdk` in the latest releases has become almost unworkable (maybe it is my lack of understanding, but I do
+not have the time commitment required to keep up with what is going on in there!). The second is the tests for this module
+that were largely dependent on [TravisCI](https://app.travis-ci.com/github/rehanone/puppet-samba?serverType=git) which has
+not been very kind to free and open source project of late. Without the ability to run any kind of tests, it was impossible
 to merge further changes.
 
-Well, most of that has been addressed to some extent in this release by very generous work of [bschonec](https://github.com/bschonec) 
-over the past few weeks. One of the main changes in this release is [#43](https://github.com/rehanone/puppet-samba/pull/43). 
+Well, most of that has been addressed to some extent in this release by very generous work of [bschonec](https://github.com/bschonec)
+over the past few weeks. One of the main changes in this release is [#43](https://github.com/rehanone/puppet-samba/pull/43).
 Not all integration tests are fully migrated yet but this is a good starting point.
 
 Other notable changes in this release are:
