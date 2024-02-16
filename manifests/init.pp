@@ -152,7 +152,7 @@ class samba (
       utils  => Array[String[1]],
   }]      $packages,
   Boolean $package_manage,
-  Samba::PackageState                  $package_ensure,
+  Stdlib::Ensure::Package              $package_ensure,
   String  $config_file,
   String  $config_lens,
   Variant[Enum[mask, manual], Boolean] $service_enable,
