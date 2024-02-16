@@ -172,81 +172,107 @@ Manage the firewall rules for the Samba services.
 
 ##### <a name="-samba--workgroup"></a>`workgroup`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This controls what workgroup your server will appear to be in when queried by clients.
 
+Default value: `'WORKGROUP'`
+
 ##### <a name="-samba--server_string"></a>`server_string`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This controls what string will show up in the printer comment box in print manager and next to the IPC connection in net view.
 
+Default value: `'%h server (Samba Server Version %v)'`
+
 ##### <a name="-samba--netbios_name"></a>`netbios_name`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This sets the NetBIOS name by which a Samba server is known.
 
+Default value: `'%{facts.hostname}'`
+
 ##### <a name="-samba--domain_master"></a>`domain_master`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Boolean, String]`
 
 Tell smbd(8) to enable WAN-wide browse list collation.
 
+Default value: `'auto'`
+
 ##### <a name="-samba--preferred_master"></a>`preferred_master`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Boolean, String]`
 
 This boolean parameter controls if nmbd(8) is a preferred master browser for its workgroup.
 
+Default value: `'auto'`
+
 ##### <a name="-samba--local_master"></a>`local_master`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 This option allows nmbd(8) to try and become a local master browser on a subnet.
 
+Default value: `true`
+
 ##### <a name="-samba--os_level"></a>`os_level`
 
-Data type: `Optional[Integer[0, 255]]`
+Data type: `Variant[Undef, Integer[0, 255]]`
 
 This integer value controls what level Samba advertises itself as for browse elections.
 
+Default value: `20`
+
 ##### <a name="-samba--wins_support"></a>`wins_support`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 This boolean controls if the nmbd(8) process in Samba will act as a WINS server.
 
+Default value: `false`
+
 ##### <a name="-samba--wins_server"></a>`wins_server`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This specifies the IP address (or DNS name: IP address for preference) of the WINS server that nmbd(8) should register with.
 
+Default value: `undef`
+
 ##### <a name="-samba--name_resolve_order"></a>`name_resolve_order`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option is used by the programs in the Samba suite to determine what naming services to use and in what order to resolve host names to IP addresses.
 
+Default value: `'lmhosts wins host bcast'`
+
 ##### <a name="-samba--server_min_protocol"></a>`server_min_protocol`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This setting controls the minimum protocol version that the server will allow the client to use.
 
+Default value: `'SMB2_10'`
+
 ##### <a name="-samba--client_max_protocol"></a>`client_max_protocol`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 The value of the parameter (a string) is the highest protocol level that will be supported for IPC$ connections as DCERPC transport.
 
+Default value: `'SMB3'`
+
 ##### <a name="-samba--client_min_protocol"></a>`client_min_protocol`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This setting controls the minimum protocol version that the client will attempt to use.
+
+Default value: `'SMB2_10'`
 
 ##### <a name="-samba--hosts_allow"></a>`hosts_allow`
 
@@ -254,11 +280,15 @@ Data type: `Array[String]`
 
 This parameter is a comma, space, or tab delimited set of hosts which are permitted to access a service.
 
+Default value: `[]`
+
 ##### <a name="-samba--hosts_deny"></a>`hosts_deny`
 
 Data type: `Array[String]`
 
 The opposite of hosts allow - hosts listed here are NOT permitted access to services unless the specific services have their own lists to override this one.
+
+Default value: `['ALL']`
 
 ##### <a name="-samba--interfaces"></a>`interfaces`
 
@@ -266,71 +296,95 @@ Data type: `Array[String]`
 
 default: interfaces =
 
+Default value: `[]`
+
 ##### <a name="-samba--bind_interfaces_only"></a>`bind_interfaces_only`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 This global parameter allows the Samba admin to limit what interfaces on a machine will serve SMB requests.
 
+Default value: `false`
+
 ##### <a name="-samba--log_file"></a>`log_file`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option allows you to override the name of the Samba log file (also known as the debug file).
 
+Default value: `'/var/log/samba/log.%m'`
+
 ##### <a name="-samba--max_log_size"></a>`max_log_size`
 
-Data type: `Optional[Integer]`
+Data type: `Variant[Undef, Integer]`
 
 This option (an integer in kilobytes) specifies the max size the log file should grow to.
 
+Default value: `10000`
+
 ##### <a name="-samba--passdb_backend"></a>`passdb_backend`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option allows the administrator to chose which backend will be used for storing user and possibly group information.
 
+Default value: `'tdbsam'`
+
 ##### <a name="-samba--domain_logons"></a>`domain_logons`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 DEPRECATED:  This parameter has been deprecated since Samba 4.13 and support for NT4-style domain logons(as distinct from the Samba AD DC) will be removed in a future Samba release.
 
+Default value: `false`
+
 ##### <a name="-samba--map_to_guest"></a>`map_to_guest`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This parameter can take four different values, which tell smbd(8) what to do with user login requests that don't match a valid UNIX user in some way.
 
+Default value: `'Never'`
+
 ##### <a name="-samba--security"></a>`security`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option affects how clients respond to Samba.
 
+Default value: `'auto'`
+
 ##### <a name="-samba--encrypt_passwords"></a>`encrypt_passwords`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 DEPRECATED: This boolean controls whether encrypted passwords will be negotiated with the client
 
+Default value: `true`
+
 ##### <a name="-samba--unix_password_sync"></a>`unix_password_sync`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 This boolean parameter controls whether Samba attempts to synchronize the UNIX password with the SMB password when the encrypted SMB password in the smbpasswd file is changed.
 
+Default value: `false`
+
 ##### <a name="-samba--socket_options"></a>`socket_options`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option allows you to set socket options to be used when talking with the client.
 
+Default value: `'TCP_NODELAY'`
+
 ##### <a name="-samba--syslog"></a>`syslog`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This parameter maps how Samba debug messages are logged onto the system syslog logging levels.
+
+Default value: `undef`
 
 ##### <a name="-samba--ntlm_auth"></a>`ntlm_auth`
 
@@ -338,35 +392,47 @@ Data type: `Variant[Enum['ntlmv1-permitted', 'ntlmv2-only', 'mschapv2-and-ntlmv2
 
 This parameter determines whether or not smbd(8) will attempt to authenticate users using the NTLM encrypted password response for this local passdb (SAM or account database).
 
+Default value: `false`
+
 ##### <a name="-samba--machine_password_timeout"></a>`machine_password_timeout`
 
-Data type: `Optional[Integer]`
+Data type: `Variant[Undef, Integer]`
 
 This parameter specifies how often the MACHINE ACCOUNT password will be changed, in seconds.
 
+Default value: `604800`
+
 ##### <a name="-samba--realm"></a>`realm`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 This option specifies the kerberos realm to use.
 
+Default value: `undef`
+
 ##### <a name="-samba--kerberos_method"></a>`kerberos_method`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 Controls how kerberos tickets are verified.
 
+Default value: `'default'`
+
 ##### <a name="-samba--dedicated_keytab_file"></a>`dedicated_keytab_file`
 
-Data type: `Optional[String]`
+Data type: `Variant[Undef, String]`
 
 Specifies the absolute path to the kerberos keytab file when kerberos method is set to "dedicated keytab".
 
+Default value: `undef`
+
 ##### <a name="-samba--obey_pam_restrictions"></a>`obey_pam_restrictions`
 
-Data type: `Optional[Boolean]`
+Data type: `Variant[Undef, Boolean]`
 
 This parameter will control whether or not Samba should obey PAM's account and session management directives.
+
+Default value: `false`
 
 ##### <a name="-samba--shares"></a>`shares`
 
@@ -378,9 +444,11 @@ Default value: `{}`
 
 ##### <a name="-samba--idmap_config"></a>`idmap_config`
 
-Data type: `Optional[Hash]`
+Data type: `Variant[Undef, Hash]`
 
 The mapping between Windows SIDs and Unix user and group IDs.
+
+Default value: `{}`
 
 ### <a name="samba--client"></a>`samba::client`
 
