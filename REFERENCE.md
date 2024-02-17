@@ -18,11 +18,6 @@
 * [`samba::option`](#samba--option): Manages smb.conf options.
 * [`samba::share`](#samba--share): == Define samba::share
 
-### Data types
-
-* [`Samba::InstallType`](#Samba--InstallType)
-* [`Samba::PackageState`](#Samba--PackageState)
-
 ## Classes
 
 ### <a name="samba"></a>`samba`
@@ -107,7 +102,7 @@ Should this module manage the installation/removal of the $packages?
 
 ##### <a name="-samba--package_ensure"></a>`package_ensure`
 
-Data type: `Samba::PackageState`
+Data type: `Stdlib::Ensure::Package`
 
 The installation state of $packages.
 
@@ -489,7 +484,7 @@ Default value: `$samba::package_manage`
 
 ##### <a name="-samba--client--package_ensure"></a>`package_ensure`
 
-Data type: `Samba::PackageState`
+Data type: `Stdlib::Ensure::Package`
 
 The installation state of the Samba client package
 
@@ -863,24 +858,4 @@ Data type: `Enum[present, absent]`
 The absent/present state of the key/value parameter.
 
 Default value: `present`
-
-## Data types
-
-### <a name="Samba--InstallType"></a>`Samba::InstallType`
-
-The Samba::InstallType data type.
-
-Alias of
-
-```puppet
-Struct[{
-    ensure => Samba::PackageState,
-}]
-```
-
-### <a name="Samba--PackageState"></a>`Samba::PackageState`
-
-The Samba::PackageState data type.
-
-Alias of `Enum[present, absent, purged, disabled, installed, latest]`
 

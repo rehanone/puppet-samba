@@ -17,7 +17,7 @@ class samba::client (
       utils  => Array[String[1]],
   }]                  $packages       = $samba::packages,
   Boolean             $package_manage = $samba::package_manage,
-  Samba::PackageState $package_ensure = $samba::package_ensure,
+  Stdlib::Ensure::Package $package_ensure = $samba::package_ensure,
 ) {
   if $package_manage {
     package { $packages[client]:
