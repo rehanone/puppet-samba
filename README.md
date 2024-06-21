@@ -53,6 +53,9 @@ This module is designed to be as clean and compliant with latest puppet code gui
       local_master         => 'yes',
       preferred_master     => 'yes',
       map_to_guest         => 'Bad User',
+      additional_config    => {
+        server_multi_channel_support => 'yes'
+      },
       shares => {
         'homes' => {
           comment    => 'Home Directories',
@@ -102,6 +105,8 @@ samba::local_master: 'yes'
 samba::preferred_master: 'yes'
 samba::map_to_guest: 'Bad User'
 samba::firewall_manage: true
+additional_config:
+  server_multi_channel_support: 'yes'
 samba::shares:
   'homes':
     comment: 'Home Directories'
