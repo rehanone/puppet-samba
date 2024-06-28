@@ -57,6 +57,10 @@ describe 'samba' do
         let(:params) do
           {
             netbios_name: 'foo',
+            additional_config: { server_multi_channel_support: 'yes',
+                                 aio_read_size: 1,
+                                 aio_write_size: 1,
+                                 min_receivefile_size: 16_384 },
             idmap_config: { '*' => { backend: 'tbd', range: '400-999' },
                            'AD' => { unix_primary_group: 'Yes', unix_nss_info: 'Yes', schema_mode: 'rfc2307', range: '1000-2147483647', backend: 'ad' } }
           }
@@ -95,6 +99,10 @@ describe 'samba' do
           is_expected.to contain_samba__option('kerberos method').with_value('default')
           is_expected.to contain_samba__option('dedicated keytab file').with_value(nil)
           is_expected.to contain_samba__option('obey pam restrictions').with_value(false)
+          is_expected.to contain_samba__option('server multi channel support').with_value('yes')
+          is_expected.to contain_samba__option('aio read size').with_value(1)
+          is_expected.to contain_samba__option('aio write size').with_value(1)
+          is_expected.to contain_samba__option('min receivefile size').with_value(16_384)
           is_expected.to contain_samba__option('idmap config * : backend').with_value('tbd')
           is_expected.to contain_samba__option('idmap config * : range').with_value('400-999')
           is_expected.to contain_samba__option('idmap config AD : unix_primary_group').with_value('Yes')
@@ -105,7 +113,7 @@ describe 'samba' do
         }
 
         it {
-          is_expected.to have_samba__option_resource_count(39)
+          is_expected.to have_samba__option_resource_count(43)
         }
       end
 

@@ -78,6 +78,7 @@ The following parameters are available in the `samba` class:
 * [`dedicated_keytab_file`](#-samba--dedicated_keytab_file)
 * [`obey_pam_restrictions`](#-samba--obey_pam_restrictions)
 * [`shares`](#-samba--shares)
+* [`additional_config`](#-samba--additional_config)
 * [`idmap_config`](#-samba--idmap_config)
 
 ##### <a name="-samba--packages"></a>`packages`
@@ -434,6 +435,14 @@ Default value: `false`
 Data type: `Hash`
 
 A hash of share names, their path(s) and other parameters.
+
+Default value: `{}`
+
+##### <a name="-samba--additional_config"></a>`additional_config`
+
+Data type: `Variant[Undef, Hash]`
+
+Additional configuration options to be added to the server smb.conf file.
 
 Default value: `{}`
 

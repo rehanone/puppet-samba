@@ -63,7 +63,7 @@
 #    This integer value controls what level Samba advertises itself as for browse elections.
 #
 # @param wins_support
-#    This boolean controls if the nmbd(8) process in Samba will act as a WINS server. 
+#    This boolean controls if the nmbd(8) process in Samba will act as a WINS server.
 #
 # @param wins_server
 #    This specifies the IP address (or DNS name: IP address for preference) of the WINS server that nmbd(8) should register with.
@@ -142,6 +142,9 @@
 # @param shares
 #    A hash of share names, their path(s) and other parameters.
 #
+# @param additional_config
+#    Additional configuration options to be added to the server smb.conf file.
+#
 # @param idmap_config
 #    The mapping between Windows SIDs and Unix user and group IDs.
 #
@@ -203,6 +206,7 @@ class samba (
   Variant[Undef, String] $kerberos_method = 'default',
   Variant[Undef, String] $dedicated_keytab_file = undef,
   Variant[Undef, Boolean] $obey_pam_restrictions = false,
+  Variant[Undef, Hash] $additional_config = {},
   Variant[Undef, Hash] $idmap_config = {},
   Hash $shares = {},
 ) {
