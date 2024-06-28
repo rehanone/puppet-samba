@@ -1,3 +1,13 @@
+## 3.1.0 (June 28, 2024)
+
+**Features:**
+
+- Updated os support matrix.
+- Add 'samba::additional_config' option. ([#52](https://github.com/rehanone/puppet-samba/pull/52); [parkr](https://github.com/parkr))
+- Allow puppetlabs-stdlib 9.x. ([#51](https://github.com/rehanone/puppet-samba/pull/51); [parkr](https://github.com/parkr))
+- Remove custom types in favor of Puppetlabs Stdlib Stdlib::Ensure::Package. ([#50](https://github.com/rehanone/puppet-samba/pull/50); [bschonec](https://github.com/bschonec))
+- Update parameters to samba.org defaults. ([#49](https://github.com/rehanone/puppet-samba/pull/49); [bschonec](https://github.com/bschonec))
+
 ## 3.0.0 (February 10, 2024)
 
 **Features:**
