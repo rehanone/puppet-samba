@@ -17,6 +17,18 @@
 # @param browseable
 #    This controls whether this share is seen in the list of available shares in a net view and in the browse list.
 #
+# @param inherit_acl
+#    The inherit acl parameter in Samba controls whether Access Control Lists (ACLs) set on parent directories are automatically inherited by new files and subdirectories created within them. 
+#
+# @param host_msdfs
+#    The host msdfs parameter controls whether the Samba server acts as an MSDFS root, facilitating redirection of file shares in a distributed file system.
+#
+# @param hosts_allow
+#    The hosts allow parameter limit access to these ip-addresses.
+#
+# @param hosts_deny
+#    The hosts deny parameter deny access to these ip-addresses.
+#
 # @param copy
 #    This parameter allows you to "clone" service entries. The specified service is simply duplicated under the current service's name.
 #
@@ -104,6 +116,10 @@ define samba::share (
   Optional[Boolean] $writable                 = undef,
   Optional[Boolean] $available                = undef,
   Optional[Boolean] $browseable               = undef,
+  Optional[Boolean] $host_msdfs               = undef,
+  Optional[Boolean] $inherit_acl              = undef,
+  Optional[Array[String]] $hosts_allow        = undef,
+  Optional[Array[String]] $hosts_deny         = undef,
   Optional[String]  $copy                     = undef,
   Optional[String]  $create_mask              = undef,
   Optional[String]  $directory_mask           = undef,
@@ -163,6 +179,10 @@ define samba::share (
       "${title}-writable":             target => $target, key => 'writable', value => $writable;
       "${title}-available":            target => $target, key => 'available', value => $available;
       "${title}-browseable":           target => $target, key => 'browseable', value => $browseable;
+      "${title}-host_msdfs":           target => $target, key => 'host msdfs', value => $host_msdfs;
+      "${title}-inherit_acl":          target => $target, key => 'inherit acl', value => $inherit_acl;
+      "${title}-hosts_allow":          target => $target, key => 'hosts allow', value => $hosts_allow;
+      "${title}-hosts_deny":           target => $target, key => 'hosts deny', value => $hosts_deny;
       "${title}-copy":                 target => $target, key => 'copy', value => $copy;
       "${title}-create mask":          target => $target, key => 'create mask', value => $create_mask;
       "${title}-directory mask":       target => $target, key => 'directory mask', value => $directory_mask;
