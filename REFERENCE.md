@@ -584,6 +584,8 @@ The following parameters are available in the `samba::share` defined type:
 * [`writable`](#-samba--share--writable)
 * [`available`](#-samba--share--available)
 * [`browseable`](#-samba--share--browseable)
+* [`host_msdfs`](#-samba--share--host_msdfs)
+* [`inherit_acl `](#-samba--share--inherit_acl )
 * [`copy`](#-samba--share--copy)
 * [`create_mask`](#-samba--share--create_mask)
 * [`directory_mask`](#-samba--share--directory_mask)
@@ -649,6 +651,22 @@ Default value: `undef`
 Data type: `Optional[Boolean]`
 
 This controls whether this share is seen in the list of available shares in a net view and in the browse list.
+
+Default value: `undef`
+
+##### <a name="-samba--share--host_msdfs"></a>`host_msdfs`
+
+Data type: `Optional[Boolean]`
+
+This controls whether the Samba server acts as an MSDFS root, facilitating redirection of file shares in a distributed file system.
+
+Default value: `undef`
+
+##### <a name="-samba--share--inherit_acl"></a>`inherit_acl`
+
+Data type: `Optional[Boolean]`
+
+This controls whether Access Control Lists (ACLs) set on parent directories are automatically inherited by new files and subdirectories created within them. 
 
 Default value: `undef`
 
