@@ -670,6 +670,22 @@ This controls whether Access Control Lists (ACLs) set on parent directories are 
 
 Default value: `undef`
 
+##### <a name="-samba--share--hosts_allow"></a>`hosts_allow`
+
+Data type: `Optional[Array[String]]`
+
+The hosts allow parameter limit access to these ip-addresses. 
+
+Default value: `undef`
+
+##### <a name="-samba--share--hosts_deny"></a>`hosts_deny`
+
+Data type: `Optional[Array[String]]`
+
+The hosts deny parameter deny access to these ip-addresses. 
+
+Default value: `undef`
+
 ##### <a name="-samba--share--copy"></a>`copy`
 
 Data type: `Optional[String]`
