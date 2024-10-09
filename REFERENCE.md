@@ -188,7 +188,7 @@ Data type: `Variant[Undef, String]`
 
 This sets the NetBIOS name by which a Samba server is known.
 
-Default value: `'%{facts.hostname}'`
+Default value: `'%{facts.networking.hostname}'`
 
 ##### <a name="-samba--domain_master"></a>`domain_master`
 
@@ -584,6 +584,10 @@ The following parameters are available in the `samba::share` defined type:
 * [`writable`](#-samba--share--writable)
 * [`available`](#-samba--share--available)
 * [`browseable`](#-samba--share--browseable)
+* [`inherit_acl`](#-samba--share--inherit_acl)
+* [`host_msdfs`](#-samba--share--host_msdfs)
+* [`hosts_allow`](#-samba--share--hosts_allow)
+* [`hosts_deny`](#-samba--share--hosts_deny)
 * [`copy`](#-samba--share--copy)
 * [`create_mask`](#-samba--share--create_mask)
 * [`directory_mask`](#-samba--share--directory_mask)
@@ -649,6 +653,38 @@ Default value: `undef`
 Data type: `Optional[Boolean]`
 
 This controls whether this share is seen in the list of available shares in a net view and in the browse list.
+
+Default value: `undef`
+
+##### <a name="-samba--share--inherit_acl"></a>`inherit_acl`
+
+Data type: `Optional[Boolean]`
+
+The inherit acl parameter in Samba controls whether Access Control Lists (ACLs) set on parent directories are automatically inherited by new files and subdirectories created within them.
+
+Default value: `undef`
+
+##### <a name="-samba--share--host_msdfs"></a>`host_msdfs`
+
+Data type: `Optional[Boolean]`
+
+The host msdfs parameter controls whether the Samba server acts as an MSDFS root, facilitating redirection of file shares in a distributed file system.
+
+Default value: `undef`
+
+##### <a name="-samba--share--hosts_allow"></a>`hosts_allow`
+
+Data type: `Optional[Array[String]]`
+
+The hosts allow parameter limit access to these ip-addresses.
+
+Default value: `undef`
+
+##### <a name="-samba--share--hosts_deny"></a>`hosts_deny`
+
+Data type: `Optional[Array[String]]`
+
+The hosts deny parameter deny access to these ip-addresses.
 
 Default value: `undef`
 
