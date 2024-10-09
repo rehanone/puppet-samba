@@ -175,7 +175,7 @@ class samba (
   # Main smb.conf options
   Variant[Undef, String] $workgroup    =  'WORKGROUP',
   Variant[Undef, String] $server_string = '%h server (Samba Server Version %v)',
-  Variant[Undef, String] $netbios_name  = '%{facts.networking.hostname}',
+  Variant[Undef, String] $netbios_name  = '%{facts.hostname}',
   Variant[Boolean, String] $domain_master = 'auto',
   Variant[Boolean, String] $preferred_master = 'auto',
   Variant[Undef, Boolean] $local_master = true,
